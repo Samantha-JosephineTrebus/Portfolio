@@ -9,13 +9,13 @@
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
-  background: #110b13;
-  color: #c59af7;
+  background: #0e0d0d;
+  color: #ffffff;
 }
 
 /* Navigation */
 header {
-  background: #222;
+  background: #181818;
   padding: 1rem;
 }
 
@@ -27,6 +27,9 @@ nav {
 
 nav p {
   margin: 0; /* unnötige Abstände vermeiden */
+  color:#c59af7;
+  font-family: 'Inter', sans-serif;
+  font-weight: 100;
 }
 
 nav ul {
@@ -45,6 +48,42 @@ nav a {
 nav a:hover,
 nav a.active {
   text-decoration: underline;
+}
+
+h2 {
+  color:#c59af7;
+}
+
+#home {
+  background: #181818;
+  border-radius: 1em;
+  padding: 2rem;
+  margin: 2rem;                  /* nur Abstand vom Rand */
+  max-width: 800px;
+  box-shadow: 0 8px 20px rgba(230, 167, 255);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.typing {
+  overflow: hidden;              /* Text außerhalb der Box verstecken */
+  white-space: nowrap;           /* alles in einer Zeile */
+  border-right: 3px solid #c59af7; /* blinkender Cursor */
+  width: 0;                      /* Start: unsichtbar */
+  animation: typing 4s steps(40, end) forwards, blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+#home:hover {
+  transform: translateY(-5px);   /* leicht nach oben schweben beim Hover */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6); /* stärkerer Schatten beim Hover */
 }
 
 /* Inhalt */
@@ -67,10 +106,11 @@ input, textarea, button {
 }
 
 button {
-  background: #1df34b;
-  color: #fff;
+  background: #d685f7;
+  color: #000000;
   border: none;
   cursor: pointer;
+  border-radius: 0.5em;
 }
 
 button:hover {
@@ -81,7 +121,7 @@ button:hover {
 footer {
   text-align: center;
   padding: 1rem;
-  background: #222;
+  background: #181818;
   color: #fff;
   margin-top: 2rem;
 }

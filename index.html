@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mein Portfolio - Start</title>
   <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -25,10 +26,10 @@
   <!-- Inhalt -->
 
   <main>
-
+    <article id="home">
     <h1>Hallo, ich bin</h1>
     <div class="GroßerName-container">
-    <h2>Samantha-Josephine Trebus</h2>
+    <h2  class="typing">Samantha-Josephine Trebus</h2>
     </div>
     <p>20 Jahre alt und studiere derzeit Medieninformatik im 6. Semester an der Berliner Hochschule für Technik. 
 
@@ -37,7 +38,37 @@ Im Rahmen meines Studiums habe ich bereits eigene Projekte verwirklichen können
 Wenn du mehr über mich erfahren möchtest, klick gerne hier:</p>
 
 <button type="submit">Mehr über mich findest du hier</button>
+</article>
+<article id="über">
+  <h1>Über mich</h1>
+  <p>Hier kannst du einen kurzen Text über dich einfügen – Ausbildung, Interessen, Skills usw.</p>
+</article>
+<article id="projekte">
+<h1>Projekte</h1>
+    <section>
+      <h2>Projekt 1</h2>
+      <p>Kurzbeschreibung deines Projekts.</p>
+    </section>
+    <section>
+      <h2>Projekt 2</h2>
+      <p>Kurzbeschreibung deines Projekts.</p>
+    </section>
+</article>
+<article id="Kontakt">
+  <h1>Kontakt</h1>
+    <form>
+      <label for="name">Name:</label>
+      <input type="text" id="name" required>
 
+      <label for="email">E-Mail:</label>
+      <input type="email" id="email" required>
+
+      <label for="message">Nachricht:</label>
+      <textarea id="message" rows="5" required></textarea>
+
+      <button type="submit">Senden</button>
+    </form>
+</article>
   </main>
 
   <!-- Footer -->
