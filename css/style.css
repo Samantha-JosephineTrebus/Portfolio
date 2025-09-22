@@ -57,14 +57,14 @@ input, textarea, button {
 }
 
 button {
-  background: #7e1c9c;
+  background: #201df3;
   color: #fff;
   border: none;
   cursor: pointer;
 }
 
 button:hover {
-  background: #aa3030;
+  background: #444;
 }
 
 /* Footer */
