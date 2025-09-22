@@ -19,6 +19,16 @@ header {
   padding: 1rem;
 }
 
+nav {
+  display: flex;
+  align-items: center;      /* vertikal mittig */
+  justify-content: space-between; /* Name links, Menü rechts */
+}
+
+nav p {
+  margin: 0; /* unnötige Abstände vermeiden */
+}
+
 nav ul {
   display: flex;
   list-style: none;
