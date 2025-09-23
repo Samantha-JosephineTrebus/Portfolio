@@ -51,7 +51,9 @@ nav a.active {
 }
 
 h2 {
-  color:#c59af7;
+  background: linear-gradient(90deg, #c59af7, #6c5eeb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 #home {
@@ -60,25 +62,25 @@ h2 {
   padding: 2rem;
   margin: 2rem;                  /* nur Abstand vom Rand */
   max-width: 800px;
-  box-shadow: 0 8px 20px rgba(230, 167, 255);
+  box-shadow: 0 8px 20px #E6A7FF;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+#home img {
+  width: 20%;
+}
+
 .typing {
-  overflow: hidden;              /* Text außerhalb der Box verstecken */
-  white-space: nowrap;           /* alles in einer Zeile */
-  border-right: 3px solid #c59af7; /* blinkender Cursor */
-  width: 0;                      /* Start: unsichtbar */
-  animation: typing 4s steps(40, end) forwards, blink 0.75s step-end infinite;
+  display: inline-block;      /* nur so breit wie der Text */
+  overflow: hidden;           /* alles außerhalb verstecken */
+  white-space: nowrap;        /* keine Umbrüche */
+  width: 0;                   /* Start: unsichtbar */
+  animation: typing 2s steps(24, end) forwards; /* Schrittweise Animation */
 }
 
 @keyframes typing {
   from { width: 0 }
-  to { width: 100% }
-}
-
-@keyframes blink {
-  50% { border-color: transparent }
+  to   { width: 100%; }       /* volle Textbreite */
 }
 
 #home:hover {
