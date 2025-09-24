@@ -1,98 +1,88 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mein Portfolio - Start</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100&display=swap" rel="stylesheet">
-</head>
-<body>
-
-  <!-- Navigation -->
-  <header id="menüleiste">
-    <nav id="navigation">
-      <p class="logo">Samantha-Josephine Trebus</p>
-
-      <!-- Hamburger Icon für kleine Bildschirme -->
-      <div class="hamburger" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-
-      <ul class="nav-links">
-        <li><a href="#home" class="active">Startseite</a></li>
-        <li><a href="#über">Über mich</a></li>
-        <li><a href="#projekte">Projekte</a></li>
-        <li><a href="#kontakt">Kontakt</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- Inhalt -->
-  <main>
-    <article id="home">
-      <div class="home-left"></div> 
-      <p>Hallo, ich bin</p>
-      <h1 class="typing">Samantha-Josephine Trebus</h1>
-      <p>20 Jahre alt und studiere derzeit Medieninformatik im 6. Semester an der Berliner Hochschule für Technik. 
+    <head>
+        <!-- Metainformationen / Zeichensatz kodierung -->
+        <meta charset="UTF-8">
+        <title>HTML</title>
+        <meta name="author" content="Samantha-Josephine Trebus">
+        <meta name="date" content="2025-04-08">
+        <link rel="stylesheet" href="styles/styleNeu.css">
+         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100&display=swap" rel="stylesheet">
+        <!-- Verlinkungen zu weiteren Ressourcen -->
+    </head>
+    <body id="top">
+       <!-- Keinen Kontent direkt im Body speichern: Hallo --> 
+        <header>
+            <nav id="navigation"> <!-- nicht als div machen -->
+            <!-- Hohes Google Ranking für diese Links.
+            Interne Navigation -->
+            <p class="logo">Samantha-Josephine Trebus</p>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Startseite</a></li>
+                <li><a href="#über">Über mich</a></li>
+                <li><a href="#projekte">Projekte</a></li>
+                <li><a href="#kontakt">Kontakt</a></li> 
+            </ul>
+        </nav>
+        </header>
+        
+        <main id="kontent">
+            <!-- Nur einmal verwenden, für den Hauptinhalt verwenden. -->
+            <!-- In Bereiche aufteilen. -->
+            <article id="home" class="article"> <!-- springt bei verlinkung dahin -->
+                <p>Hallo, ich bin</p>
+                <h1 class="typing">Samantha-Josephine Trebus</h1>
+                    <p>20 Jahre alt und studiere derzeit Medieninformatik im 6. Semester an der Berliner Hochschule für Technik. 
       Im Rahmen meines Studiums habe ich bereits eigene Projekte verwirklichen können, eine Auswahl davon findest du unter “Projekte”, dort könnt ihr euch ein Bild von meiner Arbeit machen.
       Wenn du mehr über mich erfahren möchtest, klick gerne hier:</p>
       <button id="mehrÜberMich">Mehr über mich findest du hier</button>
-    </article>
-
-    <article id="bild">
-      <img src="Lebenslauf-Lichtfoto.jpg" alt="Bildbeschreibung">
-    </article>
-
-    <article id="über">
-      <h1>Über mich</h1>
-      <p>Hey, schön, dass du hier bist! 😊</p><br>
-      <p>Ich freue mich, dass du dir die Zeit nimmst, ein bisschen über mich zu erfahren. Auf dieser Seite bekommst du einen kleinen Einblick in meine Welt, in dem du erfährst, wer ich bin, was ich gern mache und welche Fähigkeiten ich mitbringe.</p><br>
+            </article>
+             <article id="bild">
+                    <img src="./pics/Lebenslauf-Lichtfoto.jpg" alt="Bildbeschreibung">
+                    </article>
+            <article id="über" class="article">
+                <h2>Das bin ich</h2>
+                <p>Hey, schön, dass du hier bist! 😊</p><br>
+      <p>Ich freue mich, dass du dir die Zeit nimmst, ein bisschen über mich zu erfahren. Auf dieser Seite bekommst du einen kleinen Einblick in meine Welt, in dem du erfährst, wer ich bin, was ich gern mache und welche Fähigkeiten ich mitbringe.</p>
       <p>In meiner Freizeit beschäftige ich mich gern mit Rätseln und Gesellschaftsspielen. Bewegung an der frischen Luft gehört für mich ebenfalls dazu, deshalb gehe ich sehr gerne mit meinem Hund im Wald spazieren. An regnerischen Tagen genieße ich es, mich mit einem guten Buch zurückzuziehen.</p><br>
-    </article>
-
-    <article id="projekte">
-      <h1>Projekte</h1>
-      <section>
-        <h2>Projekt 1</h2>
-        <p>Kurzbeschreibung deines Projekts.</p>
-      </section>
-      <section>
-        <h2>Projekt 2</h2>
-        <p>Kurzbeschreibung deines Projekts.</p>
-      </section>
-    </article>
-
-    <article id="kontakt">
-      <h1>Kontakt</h1>
-      <form>
-        <label for="name">Name:</label>
-        <input type="text" id="name" required>
-
-        <label for="email">E-Mail:</label>
-        <input type="email" id="email" required>
-
-        <label for="message">Nachricht:</label>
-        <textarea id="message" rows="5" required></textarea>
-
-        <button type="submit">Senden</button>
-      </form>
-    </article>
-
-    <a href="#top" id="back-to-top" aria-label="Zurück zum Anfang der Seite">Zum Anfang ⬆</a>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Samantha-Josephine Trebus</p>
-  </footer>
-
-  <script>
-    function toggleMenu() {
-      document.querySelector('.nav-links').classList.toggle('open');
-    }
-  </script>
-</body>
+   </article>
+            <article id="projekte" class="article">
+                <h2>Champions & Rollen</h2>
+                    <p>In League of Legends gibt es <strong>über 160 Champions</strong>, von denen jeder eine einzigartige Persönlichkeit, Fähigkeiten und Hintergrundgeschichte besitzt. Trotz ihrer individuellen Herkunft sind alle Charaktere Teil eines gemeinsamen Universums - dem <em>Runeterra-Universum</em>.</p>
+                    <p>Durch ihre <strong>tiefgreifenden Hintergrundgeschichten</strong> und einzigartigen Spielmechaniken verbindet League of Legends actiongeladene Kämpfe mit einer umfangreichen und wachsenden <strong>Lore</strong>, die das gesamte Spieluniversum miteinander verknüpft.</p>
+            </article>
+            <article id="kontakt" class="article">
+                <h2 id="form-heading">Kontakttiere mich!</h2>
+                <p>Hier kannst du mich kontaktieren, hinterlege deine Kontaktdaten und schreib mich gerne an, ich werde mich so schnell wie möglich zurückmelden.</p>
+                <form action="form.html" method="get" aria-labelledby="form-heading" novalidate>
+                <fieldset aria-labelledby="contact">
+                    <legend>Gib hier deinen Namen ein:</legend>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" required>
+                </fieldset>
+                <fieldset>
+                    <legend>Gib hier deine E-Mail ein:</legend>
+                    <label for="email">E-Mail:</label>
+                    <input type="email" id="email" required></fieldset>
+                <fieldset>
+                    <legend>Gib hier deine Nachricht an mich ein:</legend>
+                    <label for="message">Nachricht:</label>
+                    <textarea id="message" rows="5" required></textarea> 
+                </fieldset>
+                <span id="form-message" aria-live="polite" style="margin-left: 1em;"></span>
+                <div class="button-container">
+                    <input type="submit" value="Abschicken">
+                    <input type="reset" value="Zurücksetzen">
+                  </div>
+                  
+                  </form>
+            </article>
+            <!--Änderung für Flexbox-->
+            <a href="#top" id="back-to-top" aria-label="Zurück zum Anfang der Seite">Zum Anfang ⬆</a>
+        </main>
+        <footer>
+            <p>&copy; 2025 Samantha-Josephine Trebus</p>
+        </footer>
+        <script src="styles/script.js"></script>
+    </body>
 </html>
