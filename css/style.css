@@ -15,42 +15,119 @@ body {
 
 /* Navigation */
 header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   background: #181818;
-  padding: 1rem;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+
+/* Gradient-Linie am unteren Rand */
+header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.11em;
+  background: linear-gradient(to right, transparent, #c59af7, transparent);
 }
 
 nav {
   display: flex;
-  align-items: center;      /* vertikal mittig */
-  justify-content: space-between; /* Name links, Menü rechts */
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
-nav p {
-  margin: 0; /* unnötige Abstände vermeiden */
-  color:#c59af7;
+nav p.logo {
+  margin: 0;
+  color: #c59af7;
   font-family: 'Inter', sans-serif;
   font-weight: 100;
 }
 
+/* Navigation links */
 nav ul {
   display: flex;
   list-style: none;
-  justify-content: center;
   gap: 2rem;
+  margin: 0;
 }
 
 nav a {
   color: #fff;
   text-decoration: none;
   font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
 nav a:hover,
 nav a.active {
-  text-decoration: underline;
+  transform: scale(1.1);
+  color: #c59af7;
+  text-shadow: 2px 2px 6px rgba(197, 154, 247, 0.4);
 }
 
-h2 {
+/* Hamburger Icon */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+ nav ul {
+    position: absolute;       /* Overlay unter Hamburger */
+    top: 100%;
+    right: 0;
+    background: #181818;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 200px;
+    padding: 1rem;
+    gap: 1rem;
+    max-height: 0;           /* Start hidden */
+    overflow: hidden;        /* Start hidden */
+    transition: max-height 0.3s ease;
+    border-radius: 0 0 8px 8px;
+    display: none;           /* <-- HIER */
+}
+
+  nav ul.open {
+    display: flex;  
+    max-height: 500px;
+  }
+
+  .hamburger {
+    display: flex;
+    margin-left: auto; /* bleibt rechts */
+  }
+}
+
+
+article {
+  padding-top: 2rem;    /* Abstand oben, falls nötig */
+  padding-bottom: 6rem; /* Abstand nach jedem Artikel */
+}
+
+#home h1 {
+  font-size: 5rem;
   background: linear-gradient(90deg, #c59af7, #6c5eeb);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -59,29 +136,73 @@ h2 {
 #home {
   background: #181818;
   border-radius: 1em;
-  padding: 2rem;
-  margin: 2rem;                  /* nur Abstand vom Rand */
-  max-width: 800px;
-  box-shadow: 0 8px 20px #E6A7FF;
+  padding-bottom: 2rem;
+  padding-top: 0;
+  padding-left: 5rem;
+  padding-right: 15rem;
+  margin: 0;                 
+  width: 100%;        /* füllt die Breite der Grid-Zelle */
+  height: 100%;       /* passt sich der Höhe der Grid-Zelle an */
+  box-shadow: 0 8px 20px #c59af7;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  display: flex;          /* Flexbox, um Text zu zentrieren */
+  flex-direction: column;
+  justify-content: center; /* Text vertikal zentrieren */
+  align-items: flex-start;
 }
 
-#home img {
-  width: 20%;
+#mehrÜberMich {
+  margin-top: 2rem;
+  background: #c59af7;
+  color: #000000;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.5em;
+  display: inline-block;   /* Button passt sich dem Inhalt an */
+  padding: 1em; /* optional: minimaler Innenabstand */
+  width: auto;             /* verhindert feste Breite */
+  text-align: center; 
+  transition: transform 0.3s ease;
+}
+
+#mehrÜberMich:hover,
+#mehrÜberMich:focus {
+  transform: scale(1.1);
+}
+
+#bild img {
+  width: 50%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 50%; /* rund halten */
+
+  /* Maskierung für starken Fading-Rand */
+  -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: cover;
+
+  mask-image: radial-gradient(circle, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 80%);
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: cover;
 }
 
 .typing {
-  display: inline-block;      /* nur so breit wie der Text */
-  overflow: hidden;           /* alles außerhalb verstecken */
-  white-space: nowrap;        /* keine Umbrüche */
-  width: 0;                   /* Start: unsichtbar */
-  animation: typing 2s steps(24, end) forwards; /* Schrittweise Animation */
+  display: inline-block;      
+  overflow: hidden;           
+  white-space: nowrap;        
+  animation: typingLoop 12s steps(25, end) infinite; /* Endlos wiederholen */
 }
 
-@keyframes typing {
-  from { width: 0 }
-  to   { width: 100%; }       /* volle Textbreite */
+@keyframes typingLoop {
+  0%   { width: 0; }        /* Start: unsichtbar */
+  15%  { width: 100%; }     /* Tippen abgeschlossen */
+  75%  { width: 100%; }     /* Lange Pause auf voller Breite */
+  100% { width: 0; }        /* Text wieder weg */
 }
+
 
 #home:hover {
   transform: translateY(-5px);   /* leicht nach oben schweben beim Hover */
@@ -90,10 +211,47 @@ h2 {
 
 /* Inhalt */
 main {
-  max-width: 900px;
   margin: 2rem auto;
-  padding: 1rem;
+  padding: 0.1rem;
+  display: grid;
+  grid-template-areas:
+    "cont1 cont2"
+    "cont3 cont3"
+    "cont4 cont4"
+    "cont5 cont5";
+  grid-template-columns: 4fr 1fr; /* cont1 = 2/3, cont2 = 1/3 */
+  row-gap: 2rem;                  /* Abstand zwischen Reihen */
+  column-gap: 2rem;               /* Abstand zwischen Spalten */
+  container-type: inline-size;
+  container-name: mainContainer;
 }
+
+main #home {
+  grid-area: cont1;
+  
+}
+main #bild {
+  grid-area: cont2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main #bild img {
+  width: 100%;
+  height: auto;
+  border-radius: 1em;
+  object-fit: cover;
+}
+main #über {
+  grid-area: cont3;
+}
+main #projekte {
+  grid-area: cont4;
+}
+main #kontakt {
+  grid-area: cont5;
+}
+
 
 /* Kontaktformular */
 form {
@@ -119,11 +277,42 @@ button:hover {
   background: #444;
 }
 
+#back-to-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  padding: 0;
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  background: #181818;
+  color: #c59af7;
+  border: 0.06em solid #c59af7;
+  border-radius: 5%;
+  width: 7em;
+  height: 2em;
+  font-size: 0.8rem;
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#back-to-top:hover,
+#back-to-top:focus {
+  box-shadow: 0 0 5px 5px var(--gold);
+  transform: scale(1.1);
+}
+
 /* Footer */
 footer {
-  text-align: center;
+  display: flex;                /* Flexbox aktivieren */
+  flex-wrap: wrap;              /* Zeilen umbrechen bei Bedarf */
+  justify-content: space-between; /* Inhalte gleichmäßig verteilen */
+  align-items: center;          /* Vertikal zentrieren */
   padding: 1rem;
   background: #181818;
   color: #fff;
   margin-top: 2rem;
+  text-align: center;           /* Fallback für sehr kleine Bildschirme */
 }

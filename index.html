@@ -10,78 +10,89 @@
 <body>
 
   <!-- Navigation -->
+  <header id="menüleiste">
+    <nav id="navigation">
+      <p class="logo">Samantha-Josephine Trebus</p>
 
-  <header>
-    <nav>
-      <p>Samantha-Josephine Trebus</p>
-      <ul>
-        <li><a href="index.html" class="active">Startseite</a></li>
-        <li><a href="about.html">Über mich</a></li>
-        <li><a href="projects.html">Projekte</a></li>
-        <li><a href="contact.html">Kontakt</a></li>
+      <!-- Hamburger Icon für kleine Bildschirme -->
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="#home" class="active">Startseite</a></li>
+        <li><a href="#über">Über mich</a></li>
+        <li><a href="#projekte">Projekte</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
       </ul>
     </nav>
   </header>
 
   <!-- Inhalt -->
-
   <main>
     <article id="home">
-    <div class="home-left"></div> 
-    <h1>Hallo, ich bin</h1>
-    <div class="GroßerName-container">
-    <h2  class="typing">Samantha-Josephine Trebus</h2>
-    </div>
-    <p>20 Jahre alt und studiere derzeit Medieninformatik im 6. Semester an der Berliner Hochschule für Technik. 
+      <div class="home-left"></div> 
+      <p>Hallo, ich bin</p>
+      <h1 class="typing">Samantha-Josephine Trebus</h1>
+      <p>20 Jahre alt und studiere derzeit Medieninformatik im 6. Semester an der Berliner Hochschule für Technik. 
+      Im Rahmen meines Studiums habe ich bereits eigene Projekte verwirklichen können, eine Auswahl davon findest du unter “Projekte”, dort könnt ihr euch ein Bild von meiner Arbeit machen.
+      Wenn du mehr über mich erfahren möchtest, klick gerne hier:</p>
+      <button id="mehrÜberMich">Mehr über mich findest du hier</button>
+    </article>
 
-Im Rahmen meines Studiums habe ich bereits eigene Projekte verwirklichen können, eine Auswahl davon findest du unter “Projekte”, dort könnt ihr euch ein Bild von meiner Arbeit machen.
+    <article id="bild">
+      <img src="Lebenslauf-Lichtfoto.jpg" alt="Bildbeschreibung">
+    </article>
 
-Wenn du mehr über mich erfahren möchtest, klick gerne hier:</p>
+    <article id="über">
+      <h1>Über mich</h1>
+      <p>Hey, schön, dass du hier bist! 😊</p><br>
+      <p>Ich freue mich, dass du dir die Zeit nimmst, ein bisschen über mich zu erfahren. Auf dieser Seite bekommst du einen kleinen Einblick in meine Welt, in dem du erfährst, wer ich bin, was ich gern mache und welche Fähigkeiten ich mitbringe.</p><br>
+      <p>In meiner Freizeit beschäftige ich mich gern mit Rätseln und Gesellschaftsspielen. Bewegung an der frischen Luft gehört für mich ebenfalls dazu, deshalb gehe ich sehr gerne mit meinem Hund im Wald spazieren. An regnerischen Tagen genieße ich es, mich mit einem guten Buch zurückzuziehen.</p><br>
+    </article>
 
-<button type="submit">Mehr über mich findest du hier</button>
-</div>
-  <div class="home-right">
-    
-  </div>
-</article>
-<article id="über">
-  <h1>Über mich</h1>
-  <p>Hier kannst du einen kurzen Text über dich einfügen – Ausbildung, Interessen, Skills usw.</p>
-</article>
-<article id="projekte">
-<h1>Projekte</h1>
-    <section>
-      <h2>Projekt 1</h2>
-      <p>Kurzbeschreibung deines Projekts.</p>
-    </section>
-    <section>
-      <h2>Projekt 2</h2>
-      <p>Kurzbeschreibung deines Projekts.</p>
-    </section>
-</article>
-<article id="Kontakt">
-  <h1>Kontakt</h1>
-    <form>
-      <label for="name">Name:</label>
-      <input type="text" id="name" required>
+    <article id="projekte">
+      <h1>Projekte</h1>
+      <section>
+        <h2>Projekt 1</h2>
+        <p>Kurzbeschreibung deines Projekts.</p>
+      </section>
+      <section>
+        <h2>Projekt 2</h2>
+        <p>Kurzbeschreibung deines Projekts.</p>
+      </section>
+    </article>
 
-      <label for="email">E-Mail:</label>
-      <input type="email" id="email" required>
+    <article id="kontakt">
+      <h1>Kontakt</h1>
+      <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
 
-      <label for="message">Nachricht:</label>
-      <textarea id="message" rows="5" required></textarea>
+        <label for="email">E-Mail:</label>
+        <input type="email" id="email" required>
 
-      <button type="submit">Senden</button>
-    </form>
-</article>
+        <label for="message">Nachricht:</label>
+        <textarea id="message" rows="5" required></textarea>
+
+        <button type="submit">Senden</button>
+      </form>
+    </article>
+
+    <a href="#top" id="back-to-top" aria-label="Zurück zum Anfang der Seite">Zum Anfang ⬆</a>
   </main>
 
   <!-- Footer -->
-   
   <footer>
-    <p>&copy; 2025 Dein Name</p>
+    <p>&copy; 2025 Samantha-Josephine Trebus</p>
   </footer>
 
-  <script src="js/script.js"></script>
+  <script>
+    function toggleMenu() {
+      document.querySelector('.nav-links').classList.toggle('open');
+    }
+  </script>
 </body>
 </html>
