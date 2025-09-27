@@ -103,11 +103,12 @@ li {
 }
 
 a {
-  text-decoration: underline;
+  text-decoration: none;
   color: inherit;
 }
 nav a:hover,
 nav a.active {
+  text-decoration: underline;
   color: #a49afc;
   transform: scale(1.1);
   text-shadow: 2px 2px 6px rgba(197, 154, 247, 0.4);
