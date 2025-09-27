@@ -24,7 +24,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --gold: hsl(268, 83%, 77%);
+    --gold: hsl(253, 91%, 79%);
     --gold-dark: hsl(305, 51%, 53%);
     --strong-color: hsl(37, 58%, 59%);
     --background-color: hsl(0, 0%, 11%);
