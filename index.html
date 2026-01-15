@@ -3,24 +3,32 @@
     <head>
         <!-- Metainformationen / Zeichensatz kodierung -->
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
         <title>HTML</title>
         <meta name="author" content="Samantha-Josephine Trebus">
         <meta name="date" content="2025-04-08">
         <link rel="stylesheet" href="styles/styleNeu.css">
+        <link rel="stylesheet" href="styles/responsive.css">
          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100&display=swap" rel="stylesheet">
         <!-- Verlinkungen zu weiteren Ressourcen -->
     </head>
     <body id="top">
        <!-- Keinen Kontent direkt im Body speichern: Hallo --> 
         <header>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menü öffnen">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <nav id="navigation"> <!-- nicht als div machen -->
             <!-- Hohes Google Ranking für diese Links.
             Interne Navigation -->
             <p class="logo">Samantha-Josephine Trebus</p>
-            <ul class="nav-links">
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#home" class="active">Startseite</a></li>
                 <li><a href="#über">Über mich</a></li>
                 <li><a href="#projekte">Projekte</a></li>
+                <li><a href="#preise">Preise & Dienstleistungen</a></li>
                 <li><a href="#kontakt">Kontakt</a></li> 
             </ul>
         </nav>
@@ -32,92 +40,266 @@
             <article id="home" class="article"> <!-- springt bei verlinkung dahin -->
                 <p>Hallo, ich bin</p>
                 <h1 class="typing">Samantha-Josephine Trebus</h1>
-                    <p>20 Jahre alt und studiere derzeit im 6. Semester Medieninformatik an der Berliner Hochschule für Technik.
+                    <p>20 Jahre alt und studiere derzeit Medieninformatik an der Berliner Hochschule für Technik.
 Während meines Studiums habe ich bereits verschiedene Projekte umgesetzt, eine Auswahl davon findest du im Bereich „Projekte“. Dort kannst du dir einen Eindruck von meiner Arbeit verschaffen.
 Wenn du mehr über mich erfahren möchtest, klicke gerne hier:</p>
-      <button id="mehrÜberMich">Mehr über mich findest du hier</button>
+      <a href="#über" id="mehrÜberMich" class="nav-button">Mehr über mich findest du hier</a>
             </article>
              <article id="bild">
-                    <img src="./pics/Lebenslauf-Lichtfoto.jpg" alt="Bildbeschreibung">
+                    <img src="./pics/test2.jpg" alt="Bildbeschreibung">
                     </article>
             <article id="über" class="article">
                 <h2>Das bin ich</h2>
-                    <p>Hey, schön, dass du hier bist! 😊</p><br>
-                    <p>Ich freue mich, dass du dir die Zeit nimmst, ein bisschen über mich zu erfahren. Auf dieser Seite bekommst du einen kleinen Einblick in meine Welt, in dem du erfährst, wer ich bin, was ich gern mache und welche Fähigkeiten ich mitbringe.</p>
-                    <p>In meiner Freizeit beschäftige ich mich gern mit Rätseln und Gesellschaftsspielen. Bewegung an der frischen Luft gehört für mich ebenfalls dazu, deshalb gehe ich sehr gerne mit meinem Hund im Wald spazieren. An regnerischen Tagen genieße ich es, mich mit einem guten Buch zurückzuziehen.</p>
-                    <p>Aber genung von meinen Hobbys, dich interssieren bestimmt auch meine Fertigkeiten als Informatikerin. Ich konnte bereits in Java, JavaScript/TypeScript und HTML kleinere Projekte umsetzten und diese unter anderem mit CSS designen.</p><br>
-                    <div id="akademischerWerdegang">
-                    <p>2016 - <strong>Grundschule:</strong> 
-                        Katholische Schule Sankt
-                        Paulus
-                        in Berlin, Deutschland</p>
-                    <p>2022 - <strong>Hochschulreife am Gymnasium:</strong>  
-                        Katholische Schule
-                        Liebfrauen in Berlin, Deutschland</p>
-                    <p>2023 bis heute - <strong>Bachelor of science: </strong> 
-                        Berliner Hochschule für 
-                        Technik, Medieninformatik in Berlin, Deutschland
-                    </p>
+                <p>Hey, schön, dass du hier bist! 😊</p><br>
+                <p>Ich freue mich, dass du dir die Zeit nimmst, ein bisschen über mich zu erfahren. In diesem Part bekommst du einen kleinen Einblick in meine Welt, in dem du erfährst, wer ich bin, was ich gern mache und welche Fähigkeiten ich mitbringe.</p>
+                
+                <h3 class="section-title">Meine Interessen</h3>
+                <div class="interests-grid">
+                    <div class="interest-card">
+                        <div class="interest-icon"> 🃏 </div>
+                        <h4>Rätsel & Spiele</h4>
+                        <p>Strategische Herausforderungen und Spiele machen den Tag doch gleich viel aufregender.</p>
+                    </div>
+                    <div class="interest-card">
+                        <div class="interest-icon paws-icon"> 🐾 </div>
+                        <h4>Natur & Bewegung</h4>
+                        <p>Bei schönem Wetter bin ich gerne mit meinem Hund im Wald spazieren!</p>
+                    </div>
+                    <div class="interest-card">
+                        <div class="interest-icon"> 📖 </div>
+                        <h4>Lesen</h4>
+                        <p>Regnerische Tage eignen sich perfekt für spannende Geschichten.</p>
+                    </div>
+                    <div class="interest-card">
+                        <div class="interest-icon">💻</div>
+                        <h4>Programmieren</h4>
+                        <p>Kreative Lösungen mit Code entwickeln ist auch wie Rätsel lösen.</p>
+                    </div>
+                </div>
+
+                <h3 class="section-title">Meine Fähigkeiten</h3>
+                <div class="skills-container">
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">JavaScript / TypeScript</span>
+                            <span class="skill-level">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-fill" style="width: 80%; animation-delay: 0.1s;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">HTML & CSS</span>
+                            <span class="skill-level">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-fill" style="width: 90%; animation-delay: 0.2s;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">PHP</span>
+                            <span class="skill-level">60%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-fill" style="width: 60%; animation-delay: 0s;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Node.js</span>
+                            <span class="skill-level">75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-fill" style="width: 75%; animation-delay: 0.3s;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="section-title">🎓 Mein Werdegang</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-year">2016</div>
+                                <h4>Grundschule</h4>
+                                <p>Katholische Schule Sankt Paulus in Berlin, Deutschland</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-year">2022</div>
+                                <h4>Hochschulreife am Gymnasium</h4>
+                                <p>Katholische Schule Liebfrauen in Berlin, Deutschland</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item timeline-active">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-year">2023 - heute</div>
+                                <h4>Bachelor of Science</h4>
+                                <p>Medieninformatik an der Berliner Hochschule für Technik</p>
+                            </div>
+                        </div>
                     </div>
             </article>
             <article id="projekte" class="article">
                <h2>Meine Projekte</h2>
                     <p>Hier findest du einen einblick in meine Projekte.</p>
-                    <div id="Learnloop">
-                        <h3>LearnLoop</h3>
-                            <h4>Hintergrund & Umsetzung</h4>
+                    <div class="projects-grid">
+                        <details class="project-card" id="Learnloop">
+                            <summary class="project-summary">
+                                <h3>LearnLoop</h3>
+                                <p class="project-brief">Eine webbasierte Lernplattform mit Gamification-System, Quiz und interaktiven Inhalten. Entwickelt in einer 6er-Gruppe mit React, TypeScript und Node.js.</p>
+                                <span class="expand-icon">▼</span>
+                            </summary>
+                            <div class="project-content">
+                                <h4>Hintergrund & Umsetzung</h4>
                                 <p>Im Rahmen unseres Studiums haben wir in einer sechsköpfigen Gruppe ein Semester lang in einem Modul gemeinsam an einem Projekt gearbeitet. Dabei konnten wir nicht nur unsere Kenntnisse aus dem Studium praktisch anwenden, sondern auch wertvolle Erfahrungen in Teamarbeit, Projektorganisation und der Umsetzung eigener Ideen sammeln.</p>
-                            <h4>Die Idee</h4>
+                                <h4>Die Idee</h4>
                                 <p>LearnLoop ist eine webbasierte Lernplattform, die interaktives und gemeinschaftliches Lernen fördert. Im Zentrum der Anwendung steht dabei das Lernen mithilfe von verschiedensten Lerninhalten, wie Tutorials, Bildern oder textbasierten Materialien, sowie zu einer Vielzahl von Themen passende Quizze.
                                 Lerninhalte und Quizfragen sind dabei nicht strikt miteinander verknüpft, sondern können auch unabhängig voneinander genutzt werden. So ist es möglich, sich zunächst Wissen über Tutorials anzueignen und später Quizze zu bearbeiten oder direkt mit einem Quiz zu starten, wenn ein Thema bereits bekannt ist. Das ermöglicht eine flexible und individuelle Nutzung je nach Vorwissen und Lernpräferenz.</p><br>
                                 <p>Ein integriertes Gamification-System, bestehend aus einem Levelsystem mit Erfahrungspunkten (XP), einer In-Game-Währung und Leaderboards, sorgt für zusätzliche Motivation und eine langfristige Bindung. Durch das Bearbeiten von Quizzen sammeln Nutzer: innen XP, steigen im Level auf und schalten dabei neue Funktionen frei. Dazu zählen unter anderem visuelle Anpassungen wie Avatare und Titel oder auch die Möglichkeit, eigene Inhalte zu veröffentlichen. Nutzerinnen und Nutzer können nämlich nicht nur Content nutzen, sondern auch aktiv zum Wachstum der Plattform beitragen, indem sie eigene Lerninhalte und Quizze erstellen und veröffentlichen. Auch Coins können durch das erfolgreiche Lösen von Quizzen verdient werden, sind aber begrenzt und sollen als unterstützende Lernhilfe dienen, nicht als Ersatz für eigenständiges Denken. Hinweise sind daher bewusst kostenintensiv gestaltet und begrenzt verfügbar, um den Fokus auf den Lernerfolg zu erhalten.</p><br>
                                 <p>Da es sich um unser erstes Projekt handelte und wir durch den vorgegebenen Zeitrahmen eingeschränkt waren, konnten nicht alle geplanten Funktionen vollständig umgesetzt werden. So fehlen beispielsweise die Ingame-Währung sowie der Shop, und auch ein responsives Design für Tablets ist aktuell noch nicht integriert.</p>
-                            <h4>Folgende Technonolgien werden im Projekt verwendet</h4>
+                                <h4>Folgende Technonolgien werden im Projekt verwendet</h4>
                                 <ul class="teckstack">
-                                    <li>Frontend: React, TypeScript, Vite, TailwindCSS
+                                    <li>Frontend: React, TypeScript, Vite, TailwindCSS</li>
                                     <li>Backend: Node.js 22, Express.js, MongoDB, JWT, Jest</li> 
                                     <li>Datenbank: MongoDB</li>
                                     <li>CI/CD: optional via GitLab Pipelines</li>
                                 </ul>
-                                <p>
-                                    Wenn dich das Projekt interssiert, teste es doch gerne mal aus:
-                                    <a href="https://project-learn-loop.onrender.com/login" target="_blank">
-                                        https://project-learn-loop.onrender.com/login
-                                    </a>
-                                </p>
-                    </div>
-                    <div id="Portfolio">
-                        <h3>Portfolio</h3>
+                            </div>
+                        </details>
+                        <details class="project-card" id="Portfolio">
+                            <summary class="project-summary">
+                                <h3>Portfolio</h3>
+                                <p class="project-brief">Meine eigene Website zeigt wer ich bin, meine Projekte, Skills und Dienstleistungen. Sie hat einesponsive Design mit CSS Grid und Vanilla JavaScript.</p>
+                                <span class="expand-icon">▼</span>
+                            </summary>
+                            <div class="project-content">
+                                <h4>Über dieses Portfolio</h4>
+                                <p>Diese Website ist eine professionelle Portfolio-Seite, auf der ich meine Fähigkeiten, Projekte und Dienstleistungen präsentiere. Sie wurde mit modernem HTML5, CSS3 und Vanilla JavaScript entwickelt und bietet ein responsives Design für alle Geräte.</p>
+                                <h4>Besonderheiten</h4>
+                                <ul class="teckstack">
+                                    <li>Vollständig responsive Design (Mobile, Tablet, Desktop)</li>
+                                    <li>Smooth Scrolling Navigation mit Header-Offset</li>
+                                    <li>Intersection Observer für Scroll-Animationen</li>
+                                    <li>Form Validation mit Live-Feedback</li>
+                                    <li>Hamburger Menu für Mobile</li>
+                                    <li>Dark Theme mit Glass-Morphism Effekten</li>
+                                </ul>
+                                <h4>Technologien</h4>
+                                <ul class="teckstack">
+                                    <li>Frontend: HTML5, CSS3, Vanilla JavaScript</li>
+                                    <li>Design: CSS Grid, Flexbox, CSS Variables</li>
+                                    <li>Responsive: Mobile-First Approach</li>
+                                    <li>Animationen: CSS Keyframes, Intersection Observer</li>
+                                </ul>
+                            </div>
+                        </details>
+                        <details class="project-card" id="PneumoQZ">
+                            <summary class="project-summary">
+                                <h3>Pneumo QZ Berlin</h3>
+                                <p class="project-brief">Fortbildungsplattform für Pneumologische Weiterbildungen in Berlin. Veranstaltungskalender mit Event-Details, Anmeldelinks und Admin-Panel für Eventmanagement.</p>
+                                <span class="expand-icon">▼</span>
+                            </summary>
+                            <div class="project-content">
+                                <h4>Über das Projekt</h4>
+                                <p>Pneumo QZ Berlin ist eine spezialisierte Plattform zur Verwaltung von pneumologischen Fortbildungen in Berlin. Die Website zeigt verfügbare Fortbildungstermine in übersichtlicher Kalender- oder Tabellenform an und bietet alle relevanten Informationen zu den Veranstaltungen. Außerdem gibt es eine Blog-Seite, auf welcher aktuelle News gesammelt werden.</p>
+                                <h4>Funktionalitäten</h4>
+                                <ul class="teckstack">
+                                    <li>📅 Veranstaltungskalender und Tabellenansicht</li>
+                                    <li>📋 Detaillierte Event-Informationen und Beschreibungen</li>
+                                    <li>🔗 Direktlinks zu Anmeldeseiten der Veranstalter</li>
+                                    <li>🔐 Admin-Dashboard für angemeldete Inhaber</li>
+                                    <li>➕ Erstellen, Bearbeiten und Löschen von Terminen und Bloginhalten</li>
+                                    <li>📝 Werbespalte </li>
+                                    <li>👤 Benutzergerechte Verwaltungsoberfläche</li>
+                                </ul>
+                                <h4>Technologien & Stack</h4>
+                                <ul class="teckstack">
+                                    <li>Frontend: HTML5, CSS3, JavaScript</li>
+                                    <li>Backend: PHP, Server-seitige Verwaltung</li>
+                                    <li>Datenbank: Event- und Blog-Datenverwaltung</li>
+                                    <li>Admin-Panel: Benutzerauthentifizierung und Autorisierung</li>
+                                </ul>
+                                <h4>Website</h4>
+                                <p>Das Projekt hat dein Interesse geweckt? Schau doch gerne mal vorbei: <a href="https://pneumochatbb.de/" target="_blank">pneumochatbb.de</a></p>
+                            </div>
+                        </details>
                     </div>
             </article>
+            <article id="preise" class="article">
+                <h2>Meine Preise & Dienstleistungen</h2>
+                <p>Hier findest du einen Überblick über meine Dienstleistungen und Preise.</p>
+                <div class="prices-grid">
+                    <div class="price-card">
+                        <h3>Einfache Website</h3>
+                        <p class="price">700€</p>
+                        <ul class="features">
+                            <li>✓ 1 Seite</li>
+                            <li>✓ Responsives Design</li>
+                            <li>✓ Modern</li>
+                            <li>✓ Kontaktformular</li>
+                            <li>✓ Animationen und Hover-Effekte</li>
+                            <li>✓ Einbindung externer Inhalte (Google Maps...)</li>
+                        </ul>
+                    </div>
+                    <div class="price-card">
+                        <h3>Erweiterte Website</h3>
+                        <p class="price">1000€</p>
+                        <ul class="features">
+                            <li>✓ Mehrere Seiten</li>
+                            <li>✓ Individuelle Layouts pro Seite</li>
+                            <li>✓ Erweiterte Navigation</li>
+                            <li>✓ Ui Optimiert</li>
+                        </ul>
+                    </div>
+                    <div class="price-card">
+                        <h3>Interaktive Website</h3>
+                        <p class="price">ab 1500€</p>
+                        <ul class="features">
+                            <li>✓ Interaktiv</li>
+                            <li>✓ Datenbankanbindung</li>
+                            <li>✓ Admin-Funktionen</li>
+                            <li>✓ Moderne Technologien</li>
+                        </ul>
+                    </div>
+                    <div class="price-card">
+                        <h3>Custom Projekt</h3>
+                        <p class="price">Individuell</p>
+                        <ul class="features">
+                            <li>✓ Maßgeschneidert</li>
+                            <li>✓ Vollständige Lösung</li>
+                            <li>✓ Beratung inklusive</li>
+                            <li>✓ Ihr Wunsch ist Befehl</li>
+                        </ul>
+                    </div>
+                    <div class="price-card">
+                        <h3>Du Bist dir noch nicht sicher, was zu deinem Projekt passt?</h3>
+                        <p class="price">25€</p>
+                        <ul class="features">
+                            <li> Lass uns einen Termin ausmachen und über deine Idee reden. Ich empfehle dir ein Modell und helfe dir deine Ideen zu präzisieren.</li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                <div class="disclaimer-box">
+                    <h4>📋 Technologie Stack</h4>
+                    <p>Ich entwickle mit <strong>HTML, CSS und JavaScript</strong> im Frontend und nutze <strong>Node.js</strong> oder <strong>PHP</strong> für das Backend. Dadurch entsteht eine moderne, vollständige Lösung für deine Anforderungen.</p>
+                </div>
+            </article>
             <article id="kontakt" class="article">
-                <h2 id="form-heading">Kontaktiere mich!</h2>
-                <p><strong> Vielen Dank für deinen Besuch auf meiner Portfolioseite!</strong></p><br>
+                <h2>Kontaktiere mich!</h2>
+                <p><strong> Vielen Dank für deinen Besuch auf meiner Webseite!</strong><br>
                     Ich freue mich über dein Interesse an meiner Arbeit.
-                    Wenn du Fragen hast, Feedback geben möchtest oder an einer Zusammenarbeit interessiert bist, kannst du dich gerne bei mir melden.Hier findest du meine Kontaktdaten:</p><br>
-                <p><strong>Meine E-mailadresse:</strong>  sammyjowibb@gmail.com</p>
-                <p><strong>Meine Gitlab:</strong>  https://gitlab.bht-berlin.de/satr4755</p>
-            <form action="form.html" method="get" aria-labelledby="form-heading" novalidate>
-                <fieldset aria-labelledby="contact">
-                    <legend>Gib hier deinen Namen ein:</legend>
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" required>
-                </fieldset>
-                <fieldset>
-                    <legend>Gib hier deine E-Mail ein:</legend>
-                    <label for="email">E-Mail:</label>
-                    <input type="email" id="email" required></fieldset>
-                <fieldset>
-                    <legend>Gib hier deine Nachricht an mich ein:</legend>
-                    <label for="message">Nachricht:</label>
-                    <textarea id="message" rows="5" required></textarea> 
-                </fieldset>
-                <span id="form-message" aria-live="polite" style="margin-left: 1em;"></span>
-                <div class="button-container">
-                    <input type="submit" value="Abschicken">
-                    <input type="reset" value="Zurücksetzen">
-                  </div>
-                  </form>
+                    Wenn du Fragen hast, Feedback geben möchtest oder an einer Zusammenarbeit interessiert bist, kannst du dich gerne bei mir melden. Hier findest du meine Kontaktdaten:</p><br>
+                <div class="contact-info">
+                    <p><strong>📧 E-Mailadresse:</strong>  sammyjowibb@gmail.com</p>
+                    <p><strong>🔗 GitLab:</strong>  <a href="https://gitlab.bht-berlin.de/satr4755" target="_blank">https://gitlab.bht-berlin.de/satr4755</a></p>
+                </div>
             </article>
             <!--Änderung für Flexbox-->
             <a href="#top" id="back-to-top" aria-label="Zurück zum Anfang der Seite">Zum Anfang ⬆</a>

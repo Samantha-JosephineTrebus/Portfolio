@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
           entry.target.classList.remove("visible");
         }
       });
-    },
+    },  
     { threshold: 0.01 }
   );
   articles.forEach(article => observer.observe(article));
@@ -107,7 +107,12 @@ document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
     const header = document.querySelector('header');
 
     const headerOffset = header.offsetHeight; // Höhe des Headers
-    const extraPadding = 20; // zusätzliches Padding nach Header in px
+    let extraPadding = -170; // Standard-Padding nach Header in px
+    
+    // Anderes Padding für #home
+    if (target.id === 'home') {
+      extraPadding = 50; // Extra Padding für das erste article
+    }
 
     const elementPosition = target.offsetTop;
     const offsetPosition = elementPosition - headerOffset - extraPadding;
@@ -125,6 +130,42 @@ navLinks.forEach(link => {
   link.addEventListener("click", function() {
     navLinks.forEach(l => l.classList.remove("active"));
     this.classList.add("active");
+    // Schließe Mobile-Menü nach Link-Klick
+    const navLinksElement = document.getElementById("navLinks");
+    const menuToggle = document.getElementById("menuToggle");
+    if (navLinksElement) {
+      navLinksElement.classList.remove("active");
+      if (menuToggle) {
+        menuToggle.classList.remove("active");
+      }
+    }
   });
 });
 
+// Mobile Menu Toggle
+document.addEventListener("DOMContentLoaded", () => {
+  const menuToggle = document.getElementById("menuToggle");
+  const navigation = document.getElementById("navigation");
+  const navLinks = document.getElementById("navLinks");
+
+  if (menuToggle) {
+    menuToggle.addEventListener("click", () => {
+      menuToggle.classList.toggle("active");
+      if (navigation) {
+        navigation.classList.toggle("active");
+      }
+      if (navLinks) {
+        navLinks.classList.toggle("active");
+      }
+    });
+  }
+
+  // Schließe Menü wenn man außerhalb klickt
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest("nav") && !e.target.closest(".menu-toggle")) {
+      if (navigation) navigation.classList.remove("active");
+      if (navLinks) navLinks.classList.remove("active");
+      if (menuToggle) menuToggle.classList.remove("active");
+    }
+  });
+});
