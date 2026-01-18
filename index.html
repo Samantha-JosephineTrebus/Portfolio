@@ -40,7 +40,7 @@
             <article id="home" class="article"> <!-- springt bei verlinkung dahin -->
                 <p>Hallo, ich bin</p>
                 <h1 class="typing">Samantha-Josephine Trebus</h1>
-                    <p>20 Jahre alt und studiere derzeit Medieninformatik an der Berliner Hochschule für Technik.
+                    <p>21 Jahre alt und studiere derzeit Medieninformatik an der Berliner Hochschule für Technik.
 Während meines Studiums habe ich bereits verschiedene Projekte umgesetzt, eine Auswahl davon findest du im Bereich „Projekte“. Dort kannst du dir einen Eindruck von meiner Arbeit verschaffen.
 Wenn du mehr über mich erfahren möchtest, klicke gerne hier:</p>
       <a href="#über" id="mehrÜberMich" class="nav-button">Mehr über mich findest du hier</a>
@@ -155,6 +155,10 @@ Wenn du mehr über mich erfahren möchtest, klicke gerne hier:</p>
                                 <p class="project-brief">Eine webbasierte Lernplattform mit Gamification-System, Quiz und interaktiven Inhalten. Entwickelt in einer 6er-Gruppe mit React, TypeScript und Node.js.</p>
                                 <span class="expand-icon">▼</span>
                             </summary>
+                            <div class="project-gallery">
+                                <p class="gallery-label">🖼️ Galerie</p>
+                                <!-- Bilder werden hier später hinzugefügt -->
+                            </div>
                             <div class="project-content">
                                 <h4>Hintergrund & Umsetzung</h4>
                                 <p>Im Rahmen unseres Studiums haben wir in einer sechsköpfigen Gruppe ein Semester lang in einem Modul gemeinsam an einem Projekt gearbeitet. Dabei konnten wir nicht nur unsere Kenntnisse aus dem Studium praktisch anwenden, sondern auch wertvolle Erfahrungen in Teamarbeit, Projektorganisation und der Umsetzung eigener Ideen sammeln.</p>
@@ -178,6 +182,10 @@ Wenn du mehr über mich erfahren möchtest, klicke gerne hier:</p>
                                 <p class="project-brief">Meine eigene Website zeigt wer ich bin, meine Projekte, Skills und Dienstleistungen. Sie hat einesponsive Design mit CSS Grid und Vanilla JavaScript.</p>
                                 <span class="expand-icon">▼</span>
                             </summary>
+                            <div class="project-gallery">
+                                <p class="gallery-label">🖼️ Galerie</p>
+                                <!-- Bilder werden hier später hinzugefügt -->
+                            </div>
                             <div class="project-content">
                                 <h4>Über dieses Portfolio</h4>
                                 <p>Diese Website ist eine professionelle Portfolio-Seite, auf der ich meine Fähigkeiten, Projekte und Dienstleistungen präsentiere. Sie wurde mit modernem HTML5, CSS3 und Vanilla JavaScript entwickelt und bietet ein responsives Design für alle Geräte.</p>
@@ -205,6 +213,27 @@ Wenn du mehr über mich erfahren möchtest, klicke gerne hier:</p>
                                 <p class="project-brief">Fortbildungsplattform für Pneumologische Weiterbildungen in Berlin. Veranstaltungskalender mit Event-Details, Anmeldelinks und Admin-Panel für Eventmanagement.</p>
                                 <span class="expand-icon">▼</span>
                             </summary>
+                            <div class="project-gallery">
+                                <p class="gallery-label">🖼️ Galerie</p>
+                                <div class="gallery-slider">
+                                    <div class="gallery-track">
+                                        <img src="./pics/QZKalender.png" alt="QZ Kalender Ansicht" class="gallery-image">
+                                        <img src="./pics/QZTabelle.png" alt="QZ Tabelle Ansicht" class="gallery-image">
+                                        <img src="./pics/QZTermin.png" alt="QZ Termin Details" class="gallery-image">
+                                        <img src="./pics/QZLinks.png" alt="QZ Links und Navigation" class="gallery-image">
+                                    </div>
+                                </div>
+                                <div class="gallery-controls">
+                                    <button class="gallery-btn prev" aria-label="Vorheriges Bild">←</button>
+                                    <div class="gallery-dots">
+                                        <span class="dot active" data-index="0"></span>
+                                        <span class="dot" data-index="1"></span>
+                                        <span class="dot" data-index="2"></span>
+                                        <span class="dot" data-index="3"></span>
+                                    </div>
+                                    <button class="gallery-btn next" aria-label="Nächstes Bild">→</button>
+                                </div>
+                            </div>
                             <div class="project-content">
                                 <h4>Über das Projekt</h4>
                                 <p>Pneumo QZ Berlin ist eine spezialisierte Plattform zur Verwaltung von pneumologischen Fortbildungen in Berlin. Die Website zeigt verfügbare Fortbildungstermine in übersichtlicher Kalender- oder Tabellenform an und bietet alle relevanten Informationen zu den Veranstaltungen. Außerdem gibt es eine Blog-Seite, auf welcher aktuelle News gesammelt werden.</p>
@@ -295,15 +324,63 @@ Wenn du mehr über mich erfahren möchtest, klicke gerne hier:</p>
                 <h2>Kontaktiere mich!</h2>
                 <p><strong> Vielen Dank für deinen Besuch auf meiner Webseite!</strong><br>
                     Ich freue mich über dein Interesse an meiner Arbeit.
-                    Wenn du Fragen hast, Feedback geben möchtest oder an einer Zusammenarbeit interessiert bist, kannst du dich gerne bei mir melden. Hier findest du meine Kontaktdaten:</p><br>
-                <div class="contact-info">
-                    <p><strong>📧 E-Mailadresse:</strong>  sammyjowibb@gmail.com</p>
-                    <p><strong>🔗 GitLab:</strong>  <a href="https://gitlab.bht-berlin.de/satr4755" target="_blank">https://gitlab.bht-berlin.de/satr4755</a></p>
-                </div>
+                    Wenn du Fragen hast, Feedback geben möchtest oder an einer Zusammenarbeit interessiert bist, kannst du dich gerne bei mir melden. Nutze einfach das Kontaktformular unten:</p><br>
+                
+                <form id="contactForm" class="contact-form" novalidate>
+                    <div class="form-group">
+                        <label for="firstName">Vorname *</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                        <span class="error-message" id="firstNameError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastName">Nachname *</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                        <span class="error-message" id="lastNameError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">E-Mail-Adresse *</label>
+                        <input type="email" id="email" name="email" required>
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Betreff *</label>
+                        <input type="text" id="subject" name="subject" required>
+                        <span class="error-message" id="subjectError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Nachricht *</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                        <span class="error-message" id="messageError"></span>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="privacy" name="privacy" required>
+                        <label for="privacy" class="checkbox-label">Ich akzeptiere die Verarbeitung meiner Daten. *</label>
+                        <span class="error-message" id="privacyError"></span>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Nachricht absenden</button>
+                    <span class="success-message" id="successMessage"></span>
+                </form>
             </article>
             <!--Änderung für Flexbox-->
             <a href="#top" id="back-to-top" aria-label="Zurück zum Anfang der Seite">Zum Anfang ⬆</a>
         </main>
+        
+        <!-- Lightbox Modal für Bilder -->
+        <div id="lightboxModal" class="lightbox-modal">
+            <div class="lightbox-content">
+                <button class="lightbox-nav-btn prev" aria-label="Vorheriges Bild">←</button>
+                <img id="lightboxImage" src="" alt="">
+                <button class="lightbox-nav-btn next" aria-label="Nächstes Bild">→</button>
+                <button class="lightbox-close" aria-label="Schließen">×</button>
+            </div>
+        </div>
+
         <footer>
             <p>&copy; 2025 Samantha-Josephine Trebus</p>
         </footer>

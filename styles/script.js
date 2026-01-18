@@ -15,89 +15,190 @@ document.addEventListener("DOMContentLoaded", () => {
   );
   articles.forEach(article => observer.observe(article));
 
-  // Formular-Validierung
-  const form = document.querySelector("form");
-  const firstNameInput = document.getElementById("fn");
-  const lastNameInput = document.getElementById("ln");
-  const feedbackNachname = document.getElementById("feedbackNachname");
-  const formMessage = document.getElementById("form-message");
-  const checkmark = document.getElementById("checkmark");
-  const checkbox = document.getElementById("ergebnisPerMail");
-
-  const namePattern = /^[A-ZÜÄÖ]/;
-
-  // Live-Validierung für Nachname
-  lastNameInput.addEventListener("input", () => {
-    const value = lastNameInput.value.trim();
-
-    // Klassen zurücksetzen, damit sich der Text während der Eingabe ändert
-    feedbackNachname.classList.remove("error", "success");
-    checkmark.classList.remove("visible");
-
-    if (value === "") {
-      feedbackNachname.textContent = " Der Nachname darf nicht leer sein.";
-      feedbackNachname.classList.add("error");
-    } else if (value.length < 2) {
-      feedbackNachname.textContent = " Der Nachname muss mindestens 2 Buchstaben haben.";
-      feedbackNachname.classList.add("error");
-    } else if (!namePattern.test(value)) {
-      feedbackNachname.textContent = " Der Nachname muss mit einem Großbuchstaben beginnen.";
-      feedbackNachname.classList.add("error");
-    } else {
-      feedbackNachname.textContent = "";
-      feedbackNachname.classList.add("success");
-      checkmark.classList.add("visible");
-    }
-  });
-
-  // Validierung beim Abschicken
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    const firstName = firstNameInput.value.trim();
-    const lastName = lastNameInput.value.trim();
-    const checkboxChecked = checkbox.checked;
-
-    const firstNameValid = firstName !== "";
-    const lastNameValid = lastName.length >= 2 && namePattern.test(lastName);
-
-    let errorMessages = [];
-
-    // Klassen zurücksetzen, damit sich der Text während der Eingabe ändert
-    formMessage.classList.remove("error", "success");
-
-    if (!firstNameValid) {
-      errorMessages.push("Vorname darf nicht leer sein.");
-    }
-
-    if (!lastNameValid) {
-      errorMessages.push("Nachname ist ungültig. Bitte beachte die Hinweise.");
-    }
-
-    if (!checkboxChecked) {
-      errorMessages.push("Du musst bestätigen, dass du das Ergebnis per E-Mail erhalten möchtest.");
-    }
-
-    if (errorMessages.length === 0) {
-      formMessage.textContent = "Formular wurde erfolgreich abgeschickt.";
-      formMessage.classList.add("success");
-    } else {
-      formMessage.textContent = errorMessages.join(" ");
-      formMessage.classList.add("error");
-    }
-  });
-
-    // Beim Klicken des Zurücksetzen-Buttons werden die Nachrichten wieder entfernt
-    form.addEventListener("reset", function () {
-      feedbackNachname.textContent = "";
-      feedbackNachname.classList.remove("error", "success");
+  // Kontaktformular-Validierung
+  const contactForm = document.getElementById("contactForm");
   
-      checkmark.classList.remove("visible");
-  
-      formMessage.textContent = "";
-      formMessage.classList.remove("error", "success");
+  if (contactForm) {
+    const firstName = document.getElementById("firstName");
+    const lastName = document.getElementById("lastName");
+    const email = document.getElementById("email");
+    const subject = document.getElementById("subject");
+    const message = document.getElementById("message");
+    const privacy = document.getElementById("privacy");
+    const successMessage = document.getElementById("successMessage");
+
+    const namePattern = /^[A-ZÜÄÖ]/;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // Live-Validierung für Nachname
+    lastName.addEventListener("input", () => {
+      const value = lastName.value.trim();
+      const errorSpan = document.getElementById("lastNameError");
+      errorSpan.textContent = "";
+      
+      if (value === "") {
+        errorSpan.textContent = "Der Nachname darf nicht leer sein.";
+      } else if (value.length < 2) {
+        errorSpan.textContent = "Der Nachname muss mindestens 2 Buchstaben haben.";
+      } else if (!namePattern.test(value)) {
+        errorSpan.textContent = "Der Nachname muss mit einem Großbuchstaben beginnen.";
+      }
     });
-  
+
+    // Formular absenden
+    contactForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      
+      // Fehler zurücksetzen
+      document.querySelectorAll(".error-message").forEach(el => el.textContent = "");
+      successMessage.textContent = "";
+
+      let hasErrors = false;
+
+      // Validierung
+      if (firstName.value.trim() === "") {
+        document.getElementById("firstNameError").textContent = "Vorname ist erforderlich.";
+        hasErrors = true;
+      }
+
+      const lastNameValue = lastName.value.trim();
+      if (lastNameValue === "") {
+        document.getElementById("lastNameError").textContent = "Nachname ist erforderlich.";
+        hasErrors = true;
+      } else if (lastNameValue.length < 2) {
+        document.getElementById("lastNameError").textContent = "Nachname muss mindestens 2 Buchstaben haben.";
+        hasErrors = true;
+      } else if (!namePattern.test(lastNameValue)) {
+        document.getElementById("lastNameError").textContent = "Nachname muss mit einem Großbuchstaben beginnen.";
+        hasErrors = true;
+      }
+
+      if (email.value.trim() === "") {
+        document.getElementById("emailError").textContent = "E-Mail ist erforderlich.";
+        hasErrors = true;
+      } else if (!emailPattern.test(email.value.trim())) {
+        document.getElementById("emailError").textContent = "Bitte gib eine gültige E-Mail-Adresse ein.";
+        hasErrors = true;
+      }
+
+      if (subject.value.trim() === "") {
+        document.getElementById("subjectError").textContent = "Betreff ist erforderlich.";
+        hasErrors = true;
+      }
+
+      if (message.value.trim() === "") {
+        document.getElementById("messageError").textContent = "Nachricht ist erforderlich.";
+        hasErrors = true;
+      }
+
+      if (!privacy.checked) {
+        document.getElementById("privacyError").textContent = "Du musst den Datenschutz akzeptieren.";
+        hasErrors = true;
+      }
+
+      if (!hasErrors) {
+        // Formular-Daten sammeln und an Formspree senden
+        const formData = new FormData(contactForm);
+        
+        fetch("https://formspree.io/f/xzdd41kb", {
+          method: "POST",
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        })
+        .then(response => {
+          if (response.ok) {
+            successMessage.textContent = "✓ Nachricht erfolgreich abgesendet! Ich antworte dir in Kürze.";
+            contactForm.reset();
+          } else {
+            successMessage.textContent = "✗ Es gab einen Fehler. Bitte versuche es später erneut.";
+          }
+        })
+        .catch(error => {
+          successMessage.textContent = "✗ Es gab einen Fehler beim Absenden.";
+          console.error("Error:", error);
+        });
+      }
+    });
+  }
+
+  // =================== LIGHTBOX FUNKTIONALITÄT ===================
+  const lightboxModal = document.getElementById("lightboxModal");
+  const lightboxImage = document.getElementById("lightboxImage");
+  const lightboxClose = document.querySelector(".lightbox-close");
+  const lightboxPrev = document.querySelector(".lightbox-nav-btn.prev");
+  const lightboxNext = document.querySelector(".lightbox-nav-btn.next");
+  const galleryImages = document.querySelectorAll(".gallery-image");
+
+  let currentImageIndex = 0;
+  let currentGallery = [];
+
+  // Öffne Lightbox beim Klick auf ein Bild
+  galleryImages.forEach((image, index) => {
+    image.addEventListener("click", () => {
+      // Finde die Gallery des geklickten Bildes
+      const gallery = image.closest(".gallery-slider");
+      const allImagesInGallery = gallery.querySelectorAll(".gallery-image");
+      
+      currentGallery = Array.from(allImagesInGallery);
+      currentImageIndex = Array.from(allImagesInGallery).indexOf(image);
+      
+      displayLightboxImage();
+      lightboxModal.classList.add("active");
+      document.body.style.overflow = "hidden";
+    });
+  });
+
+  function displayLightboxImage() {
+    const image = currentGallery[currentImageIndex];
+    lightboxImage.src = image.src;
+    lightboxImage.alt = image.alt;
+  }
+
+  // Navigation in der Lightbox
+  lightboxPrev.addEventListener("click", () => {
+    currentImageIndex = (currentImageIndex - 1 + currentGallery.length) % currentGallery.length;
+    displayLightboxImage();
+  });
+
+  lightboxNext.addEventListener("click", () => {
+    currentImageIndex = (currentImageIndex + 1) % currentGallery.length;
+    displayLightboxImage();
+  });
+
+  // Schließe Lightbox
+  function closeLightbox() {
+    lightboxModal.classList.remove("active");
+    document.body.style.overflow = "auto";
+  }
+
+  lightboxClose.addEventListener("click", closeLightbox);
+
+  // Schließe Lightbox wenn man auf den Hintergrund klickt
+  lightboxModal.addEventListener("click", (e) => {
+    if (e.target === lightboxModal) {
+      closeLightbox();
+    }
+  });
+
+  // Schließe Lightbox mit Escape-Taste
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && lightboxModal.classList.contains("active")) {
+      closeLightbox();
+    }
+  });
+
+  // Tastatur-Navigation in der Lightbox
+  document.addEventListener("keydown", (e) => {
+    if (lightboxModal.classList.contains("active")) {
+      if (e.key === "ArrowLeft") {
+        lightboxPrev.click();
+      } else if (e.key === "ArrowRight") {
+        lightboxNext.click();
+      }
+    }
+  });
 });
 document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
@@ -168,4 +269,90 @@ document.addEventListener("DOMContentLoaded", () => {
       if (menuToggle) menuToggle.classList.remove("active");
     }
   });
+});
+
+// =================== PROJECT GALLERY SLIDER ===================
+class GallerySlider {
+  constructor(projectElement) {
+    this.projectElement = projectElement;
+    this.currentIndex = 0;
+    this.gallery = projectElement.querySelector('.project-gallery');
+    
+    if (!this.gallery) return;
+
+    this.track = this.gallery.querySelector('.gallery-track');
+    this.images = this.gallery.querySelectorAll('.gallery-image');
+    this.prevBtn = this.gallery.querySelector('.gallery-btn.prev');
+    this.nextBtn = this.gallery.querySelector('.gallery-btn.next');
+    this.dots = this.gallery.querySelectorAll('.dot');
+
+    if (this.images.length === 0) return;
+
+    // Dynamisch die Track-Breite und Bild-Breite setzen
+    const imageCount = this.images.length;
+    
+    this.track.style.width = (imageCount * 100) + '%';
+    this.images.forEach(img => {
+      img.style.width = '100%';
+      img.style.minWidth = '100%';
+      img.style.maxWidth = '100%';
+      img.style.flexBasis = '100%';
+    });
+
+    console.log(`Gallery initialized: ${imageCount} images, each 100%, track ${imageCount * 100}%`);
+
+    this.setupEventListeners();
+    this.updateGallery();
+  }
+
+  setupEventListeners() {
+    if (this.prevBtn) {
+      this.prevBtn.addEventListener('click', () => this.previousImage());
+    }
+    if (this.nextBtn) {
+      this.nextBtn.addEventListener('click', () => this.nextImage());
+    }
+
+    this.dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => this.goToImage(index));
+    });
+
+    // Keyboard Navigation
+    document.addEventListener('keydown', (e) => {
+      if (this.projectElement.open) {
+        if (e.key === 'ArrowLeft') this.previousImage();
+        if (e.key === 'ArrowRight') this.nextImage();
+      }
+    });
+  }
+
+  nextImage() {
+    this.currentIndex = (this.currentIndex + 1) % this.images.length;
+    this.updateGallery();
+  }
+
+  previousImage() {
+    this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
+    this.updateGallery();
+  }
+
+  goToImage(index) {
+    this.currentIndex = index;
+    this.updateGallery();
+  }
+
+  updateGallery() {
+    const imageCount = this.images.length;
+    const offset = -this.currentIndex * 100;
+    this.track.style.transform = `translateX(${offset}%)`;
+
+    this.dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === this.currentIndex);
+    });
+  }
+}
+
+// Initialisiere Galleries für alle Projekte
+document.querySelectorAll('.project-card').forEach(card => {
+  new GallerySlider(card);
 });
