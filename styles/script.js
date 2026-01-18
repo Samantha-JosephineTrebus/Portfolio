@@ -15,6 +15,25 @@ document.addEventListener("DOMContentLoaded", () => {
   );
   articles.forEach(article => observer.observe(article));
 
+  // Preiskarten-Funktionalität - Zum Kontakt springen
+  const priceCards = document.querySelectorAll(".price-card");
+  priceCards.forEach(card => {
+    card.addEventListener("click", () => {
+      const contactSection = document.getElementById("kontakt");
+      if (contactSection) {
+        const headerOffset = 80; // Höhe des Headers
+        const extraPadding = 20;
+        const elementPosition = contactSection.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - headerOffset - extraPadding;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+      }
+    });
+  });
+
   // Kontaktformular-Validierung
   const contactForm = document.getElementById("contactForm");
   
