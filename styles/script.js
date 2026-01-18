@@ -97,15 +97,12 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       if (!hasErrors) {
-        // Formular-Daten sammeln und an Formspree senden
+        // Formular-Daten sammeln und an Basin senden
         const formData = new FormData(contactForm);
         
-        fetch("https://formspree.io/f/xzdd41kb", {
+        fetch("https://usebasin.com/f/97c62595a73c", {
           method: "POST",
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
+          body: formData
         })
         .then(response => {
           if (response.ok) {
