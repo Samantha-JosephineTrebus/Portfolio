@@ -297,11 +297,28 @@ nav a.active::before {
   width: 100%;
 }
 
-nav a:hover,
-nav a.active {
+#navigation a:hover,
+#navigation a.active {
   color: var(--accent-light);
   text-shadow: 0 0 10px rgba(197, 154, 247, 0.5);
   transform: translateY(-2px);
+}
+
+#navigation a::after{
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-dark), var(--accent-light));
+  transition: width 0.25s ease;
+  transform: translateX(-50%);
+}
+
+#navigation a:hover::after,
+#navigation a.active::after  {
+  width: 85%;
 }
 
 #home h1 {
@@ -1824,7 +1841,7 @@ footer.footer::after {
 }
 
 .footer-links a:hover {
-  color: var(--accent-medium);
+  color: var(--accent-light);
 }
 
 .footer-links a:hover::before {
