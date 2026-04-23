@@ -206,8 +206,8 @@ body {
 
   /* IMAGES */
   img {
-    width: 50% !important;
-    max-width: 50% !important;
+    width: 5% !important;
+    max-width: 5% !important;
     height: auto !important;
     display: block !important;
     margin: 0 auto !important;
