@@ -224,7 +224,7 @@ document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
     const header = document.querySelector('header');
 
     const headerOffset = header.offsetHeight; // Höhe des Headers
-    let extraPadding = -115; // Standard-Padding nach Header in px
+    let extraPadding = -80; // Standard-Padding nach Header in px
     
     // Anderes Padding für #home
     if (target.id === 'home') {
