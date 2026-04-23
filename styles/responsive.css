@@ -204,9 +204,9 @@ body {
     line-height: 1.3 !important;
   }
 
-  /* IMAGES */
+  /* IMAGES handy */
   img {
-    width: 60% !important;
+    width: 60% !important; 
     max-width: 60% !important;
     height: auto !important;
     display: block !important;
