@@ -290,76 +290,39 @@ body {
   }
 
   /* NAV */
-    .menu-toggle {
+  nav {
+    width: 100% !important;
     display: flex !important;
-    flex-direction: column !important;
-    gap: 4px !important;
-    padding: 0.5rem !important;
-    background: transparent !important;
-    border: none !important;
-    cursor: pointer !important;
-    flex-shrink: 0 !important;
-    z-index: 1001 !important;
-    position: relative !important;
-    margin-left: auto !important;
-    order: 2 !important;
+    justify-content: space-between !important;
+    align-items: center !important;
   }
 
-  .menu-toggle span {
-    width: 24px !important;
-    height: 3px !important;
-    background: var(--accent-light) !important;
-    border-radius: 2px !important;
-    transition: all 0.3s ease !important;
-    display: block !important;
+  nav p.logo {
+    font-size: 1.2rem !important;
   }
 
-  /* Hamburger Animation - aktiv */
-  .menu-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(8px, 8px) !important;
-  }
-
-  .menu-toggle.active span:nth-child(2) {
-    opacity: 0 !important;
-  }
-
-  .menu-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px) !important;
-  }
-
-  /* NAVIGATION MENU */
-  #navigation {
+  .menu-toggle {
     display: none !important;
   }
 
-  #navigation.active {
+  #navigation {
     display: flex !important;
-    flex-direction: column !important;
   }
 
   #navigation ul {
     display: flex !important;
-    flex-direction: column !important;
-    gap: 0 !important;
-    width: 100% !important;
+    flex-direction: row !important;
+    gap: 2rem !important;
   }
 
   #navigation li {
-    width: 100% !important;
-    padding: 0 !important;
-    border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+    border-bottom: none !important;
   }
 
   #navigation a {
-    display: block !important;
-    width: 100% !important;
-    padding: 1rem !important;
-    text-align: left !important;
-    font-size: 0.85rem !important;
-  }
-
-  #navigation a::before {
-    display: none !important;
+    padding: 0.5rem 1rem !important;
+    font-size: 0.95rem !important;
+    text-align: center !important;
   }
 
   /* MAIN CONTENT */
