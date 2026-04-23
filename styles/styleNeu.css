@@ -644,7 +644,7 @@ main {
   display: grid;
   row-gap: 0.1%;
   column-gap: 5%;
-  grid-template-areas: "cont1 cont2" "cont3 cont3" "cont4 cont4" "cont5 cont5" "cont6 cont6";
+  grid-template-areas: "cont1 cont1" "cont2 cont2" "cont3 cont3" "cont4 cont4" "cont5 cont5" "cont6 cont6";
   container-type: inline-size;
   container-name: mainContainer;
   align-items: center;
