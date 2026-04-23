@@ -290,39 +290,76 @@ body {
   }
 
   /* NAV */
-  nav {
-    width: 100% !important;
+    .menu-toggle {
     display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
+    flex-direction: column !important;
+    gap: 4px !important;
+    padding: 0.5rem !important;
+    background: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+    flex-shrink: 0 !important;
+    z-index: 1001 !important;
+    position: relative !important;
+    margin-left: auto !important;
+    order: 2 !important;
   }
 
-  nav p.logo {
-    font-size: 1.2rem !important;
+  .menu-toggle span {
+    width: 24px !important;
+    height: 3px !important;
+    background: var(--accent-light) !important;
+    border-radius: 2px !important;
+    transition: all 0.3s ease !important;
+    display: block !important;
   }
 
-  .menu-toggle {
+  /* Hamburger Animation - aktiv */
+  .menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px) !important;
+  }
+
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0 !important;
+  }
+
+  .menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px) !important;
+  }
+
+  /* NAVIGATION MENU */
+  #navigation {
     display: none !important;
   }
 
-  #navigation {
+  #navigation.active {
     display: flex !important;
+    flex-direction: column !important;
   }
 
   #navigation ul {
     display: flex !important;
-    flex-direction: row !important;
-    gap: 2rem !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    width: 100% !important;
   }
 
   #navigation li {
-    border-bottom: none !important;
+    width: 100% !important;
+    padding: 0 !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1) !important;
   }
 
   #navigation a {
-    padding: 0.5rem 1rem !important;
-    font-size: 0.95rem !important;
-    text-align: center !important;
+    display: block !important;
+    width: 100% !important;
+    padding: 1rem !important;
+    text-align: left !important;
+    font-size: 0.85rem !important;
+  }
+
+  #navigation a::before {
+    display: none !important;
   }
 
   /* MAIN CONTENT */
