@@ -206,8 +206,8 @@ body {
 
   /* IMAGES */
   img {
-    width: 60% !important;
-    max-width: 60% !important;
+    width: 30% !important;
+    max-width: 30% !important;
     height: auto !important;
     display: block !important;
     margin: 0 auto !important;
@@ -359,8 +359,8 @@ body {
 
   /* IMAGES */
   img {
-    width: 50% !important;
-    max-width: 50% !important;
+    width: 30% !important;
+    max-width: 30% !important;
   }
 
   article img {
