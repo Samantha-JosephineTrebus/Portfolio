@@ -161,7 +161,7 @@ body {
     grid-template-areas: none !important;
   }
 
-  
+
   /* ARTICLES */
   article {
     width: 100% !important;
@@ -330,7 +330,7 @@ body {
     padding: 2rem !important;
     margin-top: 80px !important;
     display: grid !important;
-    grid-template-areas: "cont1 cont2" "cont3 cont3" "cont4 cont4" "cont5 cont5" "cont6 cont6" !important;
+    grid-template-areas: "cont1 cont1" "cont2 cont2" "cont3 cont3" "cont4 cont4" "cont5 cont5" "cont6 cont6" !important;
     column-gap: 2rem !important;
     row-gap: 2rem !important;
   }
