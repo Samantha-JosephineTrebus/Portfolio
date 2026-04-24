@@ -15,6 +15,28 @@ document.addEventListener("DOMContentLoaded", () => {
   );
   articles.forEach(article => observer.observe(article));
 
+  // Smooth Navigation für nav-buttons mit Padding
+  const navButtons = document.querySelectorAll(".nav-button");
+  navButtons.forEach(button => {
+    button.addEventListener("click", (e) => {
+      e.preventDefault();
+      const href = button.getAttribute("href");
+      const targetSection = document.querySelector(href);
+      
+      if (targetSection) {
+        const headerOffset = 80; // Höhe des Headers
+        const extraPadding = 60;
+        const elementPosition = targetSection.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - headerOffset - extraPadding;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+      }
+    });
+  });
+
   // Preiskarten-Funktionalität - Zum Kontakt springen
   const priceCards = document.querySelectorAll(".price-card");
   priceCards.forEach(card => {
