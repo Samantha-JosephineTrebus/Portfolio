@@ -19,6 +19,14 @@ body {
 }
 
 /* ==========================================
+   GLOBAL STYLES
+   ========================================== */
+h2 {
+  text-align: center !important;
+  font-size: 1.8rem !important;
+}
+
+/* ==========================================
    MOBILE (max-width: 768px)
    ========================================== */
 @media screen and (max-width: 768px) {
@@ -398,5 +406,50 @@ body {
   a {
     min-height: 44px;
     min-width: 44px;
+  }
+}
+
+/* ==========================================
+   DESKTOP (min-width: 1024px) - TEXT WIDTH OPTIMIZATION
+   ========================================== */
+@media screen and (min-width: 1024px) {
+  /* Home Section - Padding on both sides */
+  h1{
+    font-size: 2.5rem !important;
+  }
+
+  h2{
+    font-size: 2.5rem !important;
+  }
+  
+  #home p {
+    padding-left: 20% !important;
+    padding-right: 20% !important;
+    font-size: 1.2rem !important;
+    text-align: center !important;
+  }
+
+  /* About Section - Right padding */
+  #über > p:not(.section-title) {
+    padding-right: 20% !important;
+    padding-left: 20% !important;
+    font-size: 1.2rem !important;
+    text-align: center !important;
+  }
+
+  /* Contact Section - Right padding */
+  #kontakt p {
+    padding-left: 20% !important;
+    padding-right: 20% !important;
+    font-size: 1.2rem !important;
+    text-align: center !important;
+  }
+
+  /* Projects Section - Text formatting */
+  #projekte > p {
+     padding-left: 20% !important;
+    padding-right: 20% !important;
+    font-size: 1.2rem !important;
+    text-align: center !important;
   }
 }
