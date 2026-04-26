@@ -21,8 +21,9 @@
   --text-muted: #b0b0b0;
   --glass-bg: rgba(255, 255, 255, 0.05);
   --glass-border: rgba(255, 255, 255, 0.1);
-  --font-family: 'Inter', sans-serif;
-  --header-font-family: Georgia, serif;
+ --font-family: 'Montserrat', sans-serif;
+--header-font-family: 'Montserrat', sans-serif;--font-family: 'Montserrat', sans-serif;
+--header-font-family: 'Montserrat', sans-serif;
 }
 
 body {
@@ -1222,6 +1223,21 @@ main #kontakt {
   font-size: 0.8rem;
   transition: transform 0.3s ease;
   display: inline-block;
+}
+
+.expand-icon.blinking {
+  animation: expandIconBlink 3.5s ease-in-out infinite;
+}
+
+@keyframes expandIconBlink {
+  0%, 100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 0px var(--accent-light));
+  }
+  50% {
+    opacity: 0.6;
+    filter: drop-shadow(0 0 8px var(--accent-light));
+  }
 }
 
 .project-card[open] .expand-icon {

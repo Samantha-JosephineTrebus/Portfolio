@@ -394,3 +394,24 @@ class GallerySlider {
 document.querySelectorAll('.project-card').forEach(card => {
   new GallerySlider(card);
 });
+
+// =================== EXPAND ICON BLINKING ANIMATION ===================
+document.querySelectorAll('.project-card').forEach(card => {
+  const expandIcon = card.querySelector('.expand-icon');
+  
+  if (expandIcon) {
+    // Setze initiale Blink-Animation (da details standardmäßig zu sind)
+    expandIcon.classList.add('blinking');
+    
+    // Höre auf toggle-Event, um die Animation zu steuern
+    card.addEventListener('toggle', () => {
+      if (card.open) {
+        // Details ist offen - Blinken entfernen
+        expandIcon.classList.remove('blinking');
+      } else {
+        // Details ist zu - Blinken hinzufügen
+        expandIcon.classList.add('blinking');
+      }
+    });
+  }
+});
