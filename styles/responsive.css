@@ -195,6 +195,19 @@ h2 {
     margin: 0.2rem 0 !important;
   }
 
+  .services-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  .service-card {
+    padding: 1.25rem 1rem !important;
+  }
+
+  .service-card h3 {
+    font-size: 1.25rem !important;
+  }
+
   .price-card h3 {
     font-size: 1.3rem !important;
   }
@@ -413,43 +426,21 @@ h2 {
    DESKTOP (min-width: 1024px) - TEXT WIDTH OPTIMIZATION
    ========================================== */
 @media screen and (min-width: 1024px) {
-  /* Home Section - Padding on both sides */
-  h1{
+  h1 {
     font-size: 2.5rem !important;
   }
 
-  h2{
+  h2 {
     font-size: 2.5rem !important;
   }
-  
-  #home p {
-    padding-left: 20% !important;
-    padding-right: 20% !important;
-    font-size: 1.2rem !important;
-    text-align: center !important;
-  }
 
-  /* About Section - Right padding */
-  #über > p:not(.section-title) {
-    padding-right: 20% !important;
-    padding-left: 20% !important;
-    font-size: 1.2rem !important;
-    text-align: center !important;
-  }
-
-  /* Contact Section - Right padding */
-  #kontakt p {
-    padding-left: 20% !important;
-    padding-right: 20% !important;
-    font-size: 1.2rem !important;
-    text-align: center !important;
-  }
-
-  /* Projects Section - Text formatting */
+  #home .hero-text,
+  #über > p:not(.section-title),
+  #kontakt p,
   #projekte > p {
-     padding-left: 20% !important;
-    padding-right: 20% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
     font-size: 1.2rem !important;
-    text-align: center !important;
+    text-align: left !important;
   }
 }

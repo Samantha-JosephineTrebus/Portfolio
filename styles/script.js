@@ -1,4 +1,35 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const body = document.body;
+  const themeToggle = document.getElementById("themeToggle");
+
+  const applyTheme = (theme) => {
+    body.setAttribute("data-theme", theme);
+    const isLight = theme === "light";
+
+    if (themeToggle) {
+      themeToggle.classList.toggle("active", isLight);
+      themeToggle.setAttribute("aria-pressed", String(isLight));
+      themeToggle.setAttribute("aria-label", isLight ? "Dark Mode aktivieren" : "Light Mode aktivieren");
+      themeToggle.title = isLight ? "Dark Mode" : "Light Mode";
+    }
+
+    try {
+      localStorage.setItem("portfolio-theme", theme);
+    } catch (error) {
+      console.warn("Theme konnte nicht gespeichert werden:", error);
+    }
+  };
+
+  const savedTheme = localStorage.getItem("portfolio-theme");
+  applyTheme(savedTheme === "light" ? "light" : "dark");
+
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      const nextTheme = body.getAttribute("data-theme") === "light" ? "dark" : "light";
+      applyTheme(nextTheme);
+    });
+  }
+
   // Erschein-Animation für Artikel
   const articles = document.querySelectorAll("article");
   const observer = new IntersectionObserver(
