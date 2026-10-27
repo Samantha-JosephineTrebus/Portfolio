@@ -65,6 +65,11 @@ h2 {
     justify-content: flex-end !important;
   }
 
+  body[data-theme="light"] header {
+    background: var(--header-bg) !important;
+    border-bottom-color: var(--header-border) !important;
+  }
+
   /* NAV FIX */
   nav {
     width: 100% !important;
@@ -162,7 +167,7 @@ h2 {
     width: 100% !important;
     max-width: 100vw !important;
     padding: 0.5rem !important;
-    margin-top: 70px !important;
+    margin-top: 110px !important;
     display: flex !important;
     flex-direction: column !important;
     gap: 0 !important;
@@ -347,6 +352,18 @@ h2 {
   }
 }
 
+@media screen and (min-width: 600px) and (max-width: 768px) {
+  main {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+
+  article {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+}
+
 /* ==========================================
    TABLET (769px - 1024px)
    ========================================== */
@@ -399,7 +416,7 @@ h2 {
   /* MAIN CONTENT */
   main {
     padding: 2rem !important;
-    margin-top: 80px !important;
+    margin-top: 100px !important;
     display: grid !important;
     grid-template-areas: "cont1 cont1" "cont2 cont2" "cont3 cont3" "cont4 cont4" "cont5 cont5" "cont6 cont6" !important;
     column-gap: 2rem !important;
@@ -460,6 +477,20 @@ h2 {
     display: flex !important;
     flex-direction: row !important;
     gap: 1rem !important;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1366px) {
+  main {
+    margin-top: 80px !important;
+  }
+
+  #home {
+    min-height: 0;
+    align-items: flex-start;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin-top: 0;
   }
 }
 
