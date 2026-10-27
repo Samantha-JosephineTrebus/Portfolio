@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title description">
+  <title id="title">Portfolio-Vorschau</title>
+  <desc id="description">Abstrakte Vorschau der dunklen Portfolio-Website mit violetten Akzenten und Projektkarten.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#11111b"/>
+      <stop offset="1" stop-color="#242033"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c59af7"/>
+      <stop offset="1" stop-color="#7c6eeb"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#background)"/>
+  <path d="M0 72h1200M0 144h1200M0 216h1200M0 288h1200M0 360h1200M0 432h1200M0 504h1200M0 576h1200M120 0v675M240 0v675M360 0v675M480 0v675M600 0v675M720 0v675M840 0v675M960 0v675M1080 0v675" fill="none" stroke="#c59af7" stroke-opacity=".06"/>
+  <rect x="74" y="58" width="1052" height="74" rx="20" fill="#191821" stroke="#ffffff" stroke-opacity=".12"/>
+  <circle cx="119" cy="95" r="20" fill="url(#accent)"/>
+  <text x="119" y="100" fill="#171421" font-family="Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle">SJT.</text>
+  <text x="190" y="101" fill="#f7f3ff" font-family="Arial, sans-serif" font-size="20" font-weight="700">Mein Portfolio</text>
+  <text x="916" y="100" fill="#c59af7" font-family="Arial, sans-serif" font-size="16">Über mich　 Projekte　 Kontakt</text>
+  <text x="94" y="218" fill="#c59af7" font-family="Arial, sans-serif" font-size="16" letter-spacing="4">MEDIENINFORMATIK</text>
+  <text x="90" y="285" fill="#ffffff" font-family="Georgia, serif" font-size="58" font-weight="700">Digitale Ideen,</text>
+  <text x="90" y="350" fill="#ffffff" font-family="Georgia, serif" font-size="58" font-weight="700">die Menschen erreichen.</text>
+  <text x="94" y="395" fill="#b0b0b0" font-family="Arial, sans-serif" font-size="20">UX/UI Design · Webentwicklung · kreative Konzepte</text>
+  <rect x="94" y="445" width="270" height="132" rx="15" fill="#25232e" stroke="#c59af7" stroke-opacity=".4"/>
+  <rect x="386" y="445" width="338" height="132" rx="15" fill="#25232e" stroke="#c59af7" stroke-opacity=".4"/>
+  <rect x="746" y="445" width="360" height="132" rx="15" fill="#25232e" stroke="#c59af7" stroke-opacity=".4"/>
+  <text x="118" y="486" fill="#c59af7" font-family="Arial, sans-serif" font-size="19" font-weight="700">Projekte</text>
+  <text x="118" y="522" fill="#b0b0b0" font-family="Arial, sans-serif" font-size="15">Digitale Lösungen mit</text>
+  <text x="118" y="545" fill="#b0b0b0" font-family="Arial, sans-serif" font-size="15">klarem Nutzerfokus</text>
+  <text x="410" y="486" fill="#c59af7" font-family="Arial, sans-serif" font-size="19" font-weight="700">UX/UI Design</text>
+  <text x="410" y="522" fill="#b0b0b0" font-family="Arial, sans-serif" font-size="15">Konzeption und Gestaltung</text>
+  <text x="410" y="545" fill="#b0b0b0" font-family="Arial, sans-serif" font-size="15">durchdachter Anwendungen</text>
+  <text x="770" y="486" fill="#c59af7" font-family="Arial, sans-serif" font-size="19" font-weight="700">Webentwicklung</text>
+  <text x="770" y="522" fill="#b0b0b0" font-family="Arial, sans-serif" font-size="15">Responsive Websites mit</text>
+  <text x="770" y="545" fill="#b0b0b0" font-family="Arial, sans-serif" font-size="15">modernem Design</text>
+</svg>

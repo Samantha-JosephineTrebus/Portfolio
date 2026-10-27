@@ -89,8 +89,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Kontaktformular-Validierung
   const contactForm = document.getElementById("contactForm");
+  const requiredContactFieldIds = [
+    "firstName", "lastName", "email", "subject", "message", "privacy",
+    "firstNameError", "lastNameError", "emailError", "subjectError", "messageError", "privacyError",
+    "successMessage"
+  ];
+  const hasCompleteContactForm = requiredContactFieldIds.every(id => document.getElementById(id));
   
-  if (contactForm) {
+  if (contactForm && hasCompleteContactForm) {
     const firstName = document.getElementById("firstName");
     const lastName = document.getElementById("lastName");
     const email = document.getElementById("email");
@@ -190,6 +196,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
     });
+  } else if (contactForm) {
+    console.error("Kontaktformular-Validierung nicht initialisiert: Benötigte Formularfelder fehlen.");
   }
 
   // =================== LIGHTBOX FUNKTIONALITÄT ===================
@@ -204,8 +212,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentGallery = [];
 
   // Öffne Lightbox beim Klick auf ein Bild
-  galleryImages.forEach((image, index) => {
-    image.addEventListener("click", () => {
+  galleryImages.forEach(image => {
+    image.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+
       // Finde die Gallery des geklickten Bildes
       const gallery = image.closest(".gallery-slider");
       const allImagesInGallery = gallery.querySelectorAll(".gallery-image");
@@ -357,6 +368,8 @@ class GallerySlider {
 
     if (this.images.length === 0) return;
 
+    this.gallery.querySelector('.gallery-slider').classList.toggle('single-image', this.images.length < 2);
+
     // Dynamisch die Track-Breite und Bild-Breite setzen
     const imageCount = this.images.length;
     
@@ -375,15 +388,31 @@ class GallerySlider {
   }
 
   setupEventListeners() {
+    this.images.forEach(image => {
+      image.addEventListener('click', event => event.stopPropagation());
+    });
+
     if (this.prevBtn) {
-      this.prevBtn.addEventListener('click', () => this.previousImage());
+      this.prevBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        this.previousImage();
+      });
     }
     if (this.nextBtn) {
-      this.nextBtn.addEventListener('click', () => this.nextImage());
+      this.nextBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        this.nextImage();
+      });
     }
 
     this.dots.forEach((dot, index) => {
-      dot.addEventListener('click', () => this.goToImage(index));
+      dot.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        this.goToImage(index);
+      });
     });
 
     // Keyboard Navigation
@@ -417,6 +446,7 @@ class GallerySlider {
 
     this.dots.forEach((dot, index) => {
       dot.classList.toggle('active', index === this.currentIndex);
+      dot.setAttribute('aria-pressed', String(index === this.currentIndex));
     });
   }
 }

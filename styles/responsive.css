@@ -265,7 +265,25 @@ h2 {
   }
 
   .project-summary {
-    padding: 1.5rem !important;
+    min-height: 390px;
+    height: auto;
+    padding: 1rem 1rem 1.25rem !important;
+    gap: 0.6rem;
+  }
+
+  .project-card {
+    min-height: 390px;
+    height: auto;
+  }
+
+  .compact-interest-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .compact-interest-grid > .interest-card {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
   }
 
   .project-summary h3 {
@@ -278,6 +296,38 @@ h2 {
 
   .project-content {
     padding: 0 1.5rem 1.5rem 1.5rem !important;
+  }
+
+  .lightbox-nav-btn {
+    width: 36px !important;
+    min-width: 36px !important;
+    max-width: 36px !important;
+    height: 36px !important;
+    min-height: 36px !important;
+    max-height: 36px !important;
+    flex-basis: 36px;
+    font-size: 1.1rem;
+  }
+
+  .lightbox-nav-btn.prev {
+    left: 0.5rem;
+  }
+
+  .lightbox-nav-btn.next {
+    right: 0.5rem;
+  }
+
+  .lightbox-close {
+    width: 36px !important;
+    min-width: 36px !important;
+    max-width: 36px !important;
+    height: 36px !important;
+    min-height: 36px !important;
+    max-height: 36px !important;
+    flex-basis: 36px;
+    top: 0.75rem;
+    right: 0.75rem;
+    font-size: 1.35rem;
   }
 
   /* FORMS */
