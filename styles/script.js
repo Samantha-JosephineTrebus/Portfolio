@@ -320,26 +320,27 @@ class GallerySlider {
 
     this.track = this.gallery.querySelector('.gallery-track');
     this.images = this.gallery.querySelectorAll('.gallery-image');
+    this.slides = this.gallery.querySelectorAll('.gallery-slide');
     this.prevBtn = this.gallery.querySelector('.gallery-btn.prev');
     this.nextBtn = this.gallery.querySelector('.gallery-btn.next');
-    this.dots = this.gallery.querySelectorAll('.dot');
 
     if (this.images.length === 0) return;
 
     this.gallery.querySelector('.gallery-slider').classList.toggle('single-image', this.images.length < 2);
 
-    // Dynamisch die Track-Breite und Bild-Breite setzen
-    const imageCount = this.images.length;
-    
-    this.track.style.width = (imageCount * 100) + '%';
-    this.images.forEach(img => {
-      img.style.width = '100%';
-      img.style.minWidth = '100%';
-      img.style.maxWidth = '100%';
-      img.style.flexBasis = '100%';
-    });
-
-    console.log(`Gallery initialized: ${imageCount} images, each 100%, track ${imageCount * 100}%`);
+    const dotsContainer = this.gallery.querySelector('.gallery-dots');
+    if (dotsContainer) {
+      dotsContainer.replaceChildren();
+      this.images.forEach((image, index) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'dot';
+        dot.setAttribute('aria-label', `Bild ${index + 1} anzeigen`);
+        dot.setAttribute('aria-pressed', 'false');
+        dotsContainer.appendChild(dot);
+      });
+    }
+    this.dots = this.gallery.querySelectorAll('.dot');
 
     this.setupEventListeners();
     this.updateGallery();
@@ -398,9 +399,9 @@ class GallerySlider {
   }
 
   updateGallery() {
-    const imageCount = this.images.length;
-    const offset = -this.currentIndex * 100;
-    this.track.style.transform = `translateX(${offset}%)`;
+    this.slides.forEach((slide, index) => {
+      slide.classList.toggle('active', index === this.currentIndex);
+    });
 
     this.dots.forEach((dot, index) => {
       dot.classList.toggle('active', index === this.currentIndex);
