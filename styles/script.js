@@ -90,38 +90,19 @@ document.addEventListener("DOMContentLoaded", () => {
   // Kontaktformular-Validierung
   const contactForm = document.getElementById("contactForm");
   const requiredContactFieldIds = [
-    "firstName", "lastName", "email", "subject", "message", "privacy",
-    "firstNameError", "lastNameError", "emailError", "subjectError", "messageError", "privacyError",
+    "firstName", "email", "message",
+    "firstNameError", "emailError", "messageError",
     "successMessage"
   ];
   const hasCompleteContactForm = requiredContactFieldIds.every(id => document.getElementById(id));
   
   if (contactForm && hasCompleteContactForm) {
     const firstName = document.getElementById("firstName");
-    const lastName = document.getElementById("lastName");
     const email = document.getElementById("email");
-    const subject = document.getElementById("subject");
     const message = document.getElementById("message");
-    const privacy = document.getElementById("privacy");
     const successMessage = document.getElementById("successMessage");
 
-    const namePattern = /^[A-ZÜÄÖ]/;
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    // Live-Validierung für Nachname
-    lastName.addEventListener("input", () => {
-      const value = lastName.value.trim();
-      const errorSpan = document.getElementById("lastNameError");
-      errorSpan.textContent = "";
-      
-      if (value === "") {
-        errorSpan.textContent = "Der Nachname darf nicht leer sein.";
-      } else if (value.length < 2) {
-        errorSpan.textContent = "Der Nachname muss mindestens 2 Buchstaben haben.";
-      } else if (!namePattern.test(value)) {
-        errorSpan.textContent = "Der Nachname muss mit einem Großbuchstaben beginnen.";
-      }
-    });
 
     // Formular absenden
     contactForm.addEventListener("submit", function (event) {
@@ -133,21 +114,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       let hasErrors = false;
 
-      // Validierung
       if (firstName.value.trim() === "") {
-        document.getElementById("firstNameError").textContent = "Vorname ist erforderlich.";
-        hasErrors = true;
-      }
-
-      const lastNameValue = lastName.value.trim();
-      if (lastNameValue === "") {
-        document.getElementById("lastNameError").textContent = "Nachname ist erforderlich.";
-        hasErrors = true;
-      } else if (lastNameValue.length < 2) {
-        document.getElementById("lastNameError").textContent = "Nachname muss mindestens 2 Buchstaben haben.";
-        hasErrors = true;
-      } else if (!namePattern.test(lastNameValue)) {
-        document.getElementById("lastNameError").textContent = "Nachname muss mit einem Großbuchstaben beginnen.";
+        document.getElementById("firstNameError").textContent = "Name ist erforderlich.";
         hasErrors = true;
       }
 
@@ -159,18 +127,8 @@ document.addEventListener("DOMContentLoaded", () => {
         hasErrors = true;
       }
 
-      if (subject.value.trim() === "") {
-        document.getElementById("subjectError").textContent = "Betreff ist erforderlich.";
-        hasErrors = true;
-      }
-
       if (message.value.trim() === "") {
         document.getElementById("messageError").textContent = "Nachricht ist erforderlich.";
-        hasErrors = true;
-      }
-
-      if (!privacy.checked) {
-        document.getElementById("privacyError").textContent = "Du musst den Datenschutz akzeptieren.";
         hasErrors = true;
       }
 
