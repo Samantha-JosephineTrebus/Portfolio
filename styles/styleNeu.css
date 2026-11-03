@@ -1707,6 +1707,18 @@ main #kontakt {
   margin: 2rem 0 4rem 0;
 }
 
+#PneumoQZ {
+  order: 1;
+}
+
+#GreenUp {
+  order: 2;
+}
+
+#Learnloop {
+  order: 3;
+}
+
 .project-card {
   background: var(--glass-bg);
   backdrop-filter: blur(10px);
@@ -1761,6 +1773,16 @@ main #kontakt {
   color: var(--text-color);
   font-size: 0.95rem;
   line-height: 1.5;
+}
+
+.thesis-statement {
+  margin: 0.25rem 0;
+  padding: 0.85rem 1rem;
+  color: var(--accent-light);
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
 }
 
 .project-brief strong {
