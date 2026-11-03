@@ -314,12 +314,16 @@ h2 {
     font-size: 1.1rem;
   }
 
+  .lightbox-nav-btn i {
+    font-size: 1.75rem;
+  }
+
   .lightbox-nav-btn.prev {
-    left: 0.5rem;
+    left: 1.75rem;
   }
 
   .lightbox-nav-btn.next {
-    right: 0.5rem;
+    right: 1.75rem;
   }
 
   .lightbox-close {
@@ -333,6 +337,10 @@ h2 {
     top: 0.75rem;
     right: 0.75rem;
     font-size: 1.35rem;
+  }
+
+  .lightbox-close i {
+    font-size: 1.5rem;
   }
 
   /* FORMS */

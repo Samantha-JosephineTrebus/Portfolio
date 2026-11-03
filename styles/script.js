@@ -334,6 +334,14 @@ class GallerySlider {
     this.slider = this.gallery.querySelector('.gallery-slider');
     this.slider.classList.toggle('single-image', this.images.length < 2);
 
+    const controls = this.gallery.querySelector('.gallery-controls');
+    const dotsContainer = this.gallery.querySelector('.gallery-dots');
+    if (controls) {
+      [this.prevBtn, this.nextBtn].forEach(button => {
+        if (button) this.track.appendChild(button);
+      });
+    }
+
     this.images.forEach((image, index) => {
       image.dataset.caption = this.captions[index];
       this.track.appendChild(image);
@@ -342,10 +350,10 @@ class GallerySlider {
 
     this.caption = document.createElement('p');
     this.caption.className = 'gallery-caption';
-    this.slider.insertBefore(this.caption, this.gallery.querySelector('.gallery-controls'));
+    this.slider.appendChild(this.caption);
 
-    const dotsContainer = this.gallery.querySelector('.gallery-dots');
     if (dotsContainer) {
+      this.slider.appendChild(dotsContainer);
       dotsContainer.replaceChildren();
       this.images.forEach((image, index) => {
         const dot = document.createElement('button');
@@ -356,6 +364,7 @@ class GallerySlider {
         dotsContainer.appendChild(dot);
       });
     }
+    if (controls) controls.remove();
     this.dots = this.gallery.querySelectorAll('.dot');
 
     this.setupEventListeners();
@@ -425,6 +434,7 @@ class GallerySlider {
       dot.setAttribute('aria-pressed', String(index === this.currentIndex));
     });
   }
+
 }
 
 // Initialisiere Galleries für alle Projekte

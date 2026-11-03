@@ -25,6 +25,9 @@
   --glass-border: rgba(255, 255, 255, 0.1);
   --switch-track: rgba(255, 255, 255, 0.12);
   --switch-thumb: #ffffff;
+  --scrollbar-track: #181818;
+  --scrollbar-thumb: #7566f7;
+  --scrollbar-thumb-hover: #aa89f8;
   --font-family: 'Montserrat', sans-serif;
   --header-font-family: 'Montserrat', sans-serif;
 }
@@ -41,6 +44,39 @@ body[data-theme="light"] {
   --glass-border: rgba(121, 103, 187, 0.15);
   --switch-track: rgba(123, 108, 236, 0.18);
   --switch-thumb: #ffffff;
+  --scrollbar-track: #e8e7f2;
+  --scrollbar-thumb: #8c75df;
+  --scrollbar-thumb-hover: #7160f8;
+}
+
+:root:has(body[data-theme="light"]) {
+  --scrollbar-track: #e8e7f2;
+  --scrollbar-thumb: #8c75df;
+  --scrollbar-thumb-hover: #7160f8;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border: 2px solid var(--scrollbar-track);
+  border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
 }
 
 body {
@@ -1386,6 +1422,17 @@ main #kontakt {
   left: 0;
 }
 
+.project-links li::before {
+  content: none;
+}
+
+.project-links li a > i {
+  display: inline-block;
+  margin-left: 0.35rem;
+  color: var(--accent-light);
+  font-size: 0.9em;
+}
+
 /* =================== INTERESTS & SKILLS STYLES =================== */
 .section-title {
   color: var(--accent-light);
@@ -1977,6 +2024,7 @@ html {
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
+  isolation: isolate;
   border-radius: 8px;
   background: var(--primary-dark);
   box-shadow: 0 8px 32px rgba(197, 154, 247, 0.1);
@@ -2058,9 +2106,10 @@ html {
   width: 100%;
   height: auto;
   max-height: 78vh;
-  border-radius: 8px;
-  box-shadow: 0 8px 32px rgba(197, 154, 247, 0.3);
   object-fit: contain;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
 }
 
 .lightbox-caption {
@@ -2081,6 +2130,31 @@ html {
   transform: none;
 }
 
+.lightbox-nav-btn i,
+.gallery-btn i,
+.lightbox-close i {
+  pointer-events: none;
+}
+
+.gallery-btn i,
+.lightbox-nav-btn i,
+.lightbox-close i {
+  color: var(--accent-light);
+  line-height: 1;
+}
+
+.gallery-btn i {
+  font-size: 1.75rem;
+}
+
+.lightbox-nav-btn i {
+  font-size: 2.5rem;
+}
+
+.lightbox-close i {
+  font-size: 2rem;
+}
+
 .lightbox-nav-btn {
   position: absolute;
   top: 50%;
@@ -2094,11 +2168,11 @@ html {
   flex: 0 0 50px;
   box-sizing: border-box;
   padding: 0 !important;
-  background: linear-gradient(135deg, var(--accent-dark), var(--accent-light));
-  border: none;
-  border-radius: 50% !important;
-  color: #000000;
-  font-size: 1.5rem;
+  background: transparent;
+  border: 0;
+  border-radius: 0 !important;
+  color: var(--accent-light);
+  font-size: 3rem;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -2109,16 +2183,16 @@ html {
 }
 
 .lightbox-nav-btn.prev {
-  left: 1rem;
+  left: 3rem;
 }
 
 .lightbox-nav-btn.next {
-  right: 1rem;
+  right: 3rem;
 }
 
 .lightbox-nav-btn:hover {
   transform: translateY(-50%) scale(1.1);
-  box-shadow: 0 4px 15px rgba(197, 154, 247, 0.5);
+  box-shadow: none;
 }
 
 .lightbox-nav-btn:active {
@@ -2138,11 +2212,11 @@ html {
   flex: 0 0 45px;
   box-sizing: border-box;
   padding: 0 !important;
-  background: linear-gradient(135deg, var(--accent-dark), var(--accent-light));
-  border: none;
-  border-radius: 50% !important;
-  color: #000000;
-  font-size: 1.8rem;
+  background: transparent;
+  border: 0;
+  border-radius: 0 !important;
+  color: var(--accent-light);
+  font-size: 2.5rem;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -2154,7 +2228,7 @@ html {
 
 .lightbox-close:hover {
   transform: scale(1.1);
-  box-shadow: 0 4px 15px rgba(197, 154, 247, 0.5);
+  box-shadow: none;
 }
 
 .lightbox-close:active {
@@ -2162,36 +2236,32 @@ html {
 }
 
 .gallery-controls {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  min-height: 2rem;
-  margin-top: 0.25rem;
+  display: contents;
 }
 
 .gallery-btn {
-  position: static;
-  width: 24px;
-  height: 24px;
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  width: 36px;
+  height: 36px;
   padding: 0;
-  transform: none;
-  background: rgba(24, 24, 24, 0.58);
-  color: var(--text-color);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  color: var(--accent-light);
+  border: 0;
+  border-radius: 0;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 2rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.62;
+  opacity: 0.9;
   pointer-events: auto;
   transition: opacity 0.2s ease, background 0.2s ease, transform 0.2s ease;
   box-shadow: none;
   z-index: 2;
-  backdrop-filter: blur(6px);
+  backdrop-filter: none;
 }
 
 .gallery-slider .gallery-image {
@@ -2207,30 +2277,30 @@ html {
 }
 
 .gallery-controls .gallery-btn {
-  width: 24px !important;
-  min-width: 24px !important;
-  height: 24px !important;
-  min-height: 24px !important;
+  width: 36px !important;
+  min-width: 36px !important;
+  height: 36px !important;
+  min-height: 36px !important;
   padding: 0 !important;
 }
 
 .gallery-btn.prev {
-  left: auto;
+  left: 0.4rem;
 }
 
 .gallery-btn.next {
-  right: auto;
+  right: 0.4rem;
 }
 
 .gallery-btn:hover {
   opacity: 1;
-  background: rgba(24, 24, 24, 0.85);
-  transform: scale(1.06);
+  background: transparent;
+  transform: translateY(-50%) scale(1.06);
   box-shadow: none;
 }
 
 .gallery-btn:active {
-  transform: scale(0.95);
+  transform: translateY(-50%) scale(0.95);
 }
 
 .gallery-btn:focus-visible,
@@ -2244,6 +2314,9 @@ html {
   display: flex;
   gap: 0.4rem;
   align-items: center;
+  justify-content: center;
+  min-height: 1.5rem;
+  margin: 0.25rem auto 0;
   padding: 0;
   border-radius: 999px;
   background: transparent;
@@ -2294,7 +2367,7 @@ html {
   .gallery-btn {
     width: 32px;
     height: 32px;
-    font-size: 1rem;
+    font-size: 1.75rem;
   }
 }
 
