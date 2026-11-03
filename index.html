@@ -745,10 +745,14 @@
         <!-- Lightbox Modal für Bilder -->
         <div id="lightboxModal" class="lightbox-modal">
             <div class="lightbox-content">
-                <button class="lightbox-nav-btn prev" aria-label="Vorheriges Bild"><i class="fa-solid fa-angle-left" aria-hidden="true"></i></button>
-                <p id="lightboxCaption" class="lightbox-caption"></p>
-                <img id="lightboxImage" src="" alt="">
-                <button class="lightbox-nav-btn next" aria-label="Nächstes Bild"><i class="fa-solid fa-angle-right" aria-hidden="true"></i></button>
+                <div class="lightbox-media">
+                    <p id="lightboxCaption" class="lightbox-caption"></p>
+                    <div class="lightbox-image-wrap">
+                        <button class="lightbox-nav-btn prev" aria-label="Vorheriges Bild"><i class="fa-solid fa-angle-left" aria-hidden="true"></i></button>
+                        <img id="lightboxImage" src="" alt="">
+                        <button class="lightbox-nav-btn next" aria-label="Nächstes Bild"><i class="fa-solid fa-angle-right" aria-hidden="true"></i></button>
+                    </div>
+                </div>
                 <button class="lightbox-close" aria-label="Schließen"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
             </div>
         </div>
