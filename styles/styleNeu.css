@@ -2026,8 +2026,9 @@ html {
   overflow: hidden;
   isolation: isolate;
   border-radius: 8px;
+  border: 1px solid rgba(197, 154, 247, 0.2);
   background: var(--primary-dark);
-  box-shadow: 0 8px 32px rgba(197, 154, 247, 0.1);
+  box-shadow: none;
 }
 
 .gallery-image {
@@ -2285,6 +2286,9 @@ html {
   max-width: 100% !important;
   min-height: 0;
   margin: 0 !important;
+  border: 0 !important;
+  border-radius: inherit !important;
+  box-shadow: none !important;
 }
 
 .gallery-slider .gallery-track {
