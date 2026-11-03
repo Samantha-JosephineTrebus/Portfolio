@@ -161,6 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // =================== LIGHTBOX FUNKTIONALITÄT ===================
   const lightboxModal = document.getElementById("lightboxModal");
   const lightboxImage = document.getElementById("lightboxImage");
+  const lightboxCaption = document.getElementById("lightboxCaption");
   const lightboxClose = document.querySelector(".lightbox-close");
   const lightboxPrev = document.querySelector(".lightbox-nav-btn.prev");
   const lightboxNext = document.querySelector(".lightbox-nav-btn.next");
@@ -192,6 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const image = currentGallery[currentImageIndex];
     lightboxImage.src = image.src;
     lightboxImage.alt = image.alt;
+    lightboxCaption.textContent = image.dataset.caption || image.alt;
   }
 
   // Navigation in der Lightbox
@@ -319,14 +321,28 @@ class GallerySlider {
     if (!this.gallery) return;
 
     this.track = this.gallery.querySelector('.gallery-track');
-    this.images = this.gallery.querySelectorAll('.gallery-image');
-    this.slides = this.gallery.querySelectorAll('.gallery-slide');
+    this.slides = Array.from(this.gallery.querySelectorAll('.gallery-slide'));
+    this.images = this.slides.map(slide => slide.querySelector('.gallery-image'));
+    this.captions = this.slides.map((slide, index) =>
+      slide.querySelector('.gallery-caption')?.textContent.trim() || this.images[index].alt
+    );
     this.prevBtn = this.gallery.querySelector('.gallery-btn.prev');
     this.nextBtn = this.gallery.querySelector('.gallery-btn.next');
 
     if (this.images.length === 0) return;
 
-    this.gallery.querySelector('.gallery-slider').classList.toggle('single-image', this.images.length < 2);
+    this.slider = this.gallery.querySelector('.gallery-slider');
+    this.slider.classList.toggle('single-image', this.images.length < 2);
+
+    this.images.forEach((image, index) => {
+      image.dataset.caption = this.captions[index];
+      this.track.appendChild(image);
+    });
+    this.slides.forEach(slide => slide.remove());
+
+    this.caption = document.createElement('p');
+    this.caption.className = 'gallery-caption';
+    this.slider.insertBefore(this.caption, this.gallery.querySelector('.gallery-controls'));
 
     const dotsContainer = this.gallery.querySelector('.gallery-dots');
     if (dotsContainer) {
@@ -399,9 +415,10 @@ class GallerySlider {
   }
 
   updateGallery() {
-    this.slides.forEach((slide, index) => {
-      slide.classList.toggle('active', index === this.currentIndex);
+    this.images.forEach((image, index) => {
+      image.classList.toggle('active', index === this.currentIndex);
     });
+    this.caption.textContent = this.captions[this.currentIndex];
 
     this.dots.forEach((dot, index) => {
       dot.classList.toggle('active', index === this.currentIndex);
